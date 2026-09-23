@@ -52,7 +52,8 @@ agent/             ③ 智能体：tools(search_jobs/match_skills) / graph(LangG
 evals/             ④ 评测：dataset.json(30条) / metrics(纯函数指标) / run_eval(评测脚本)
 api/               ⑤ 服务：FastAPI + SSE（sources → token → done 事件流）
 tests/             单元测试：爬虫清洗/Agent 图结构/护栏/工具降级/评测集自检
-jobs.db            SQLite 数据库（jobs 表 + jd_chunks 向量表）
+data/              真实采集数据快照（CSV，88 条岗位，网页可直接查看；完整重建用 crawler 命令）
+jobs.db            SQLite 数据库（jobs 表 + jd_chunks 向量表，运行时生成，不入库）
 ```
 
 ## 评测说明
