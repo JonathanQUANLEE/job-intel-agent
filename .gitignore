@@ -1,0 +1,21 @@
+# 密钥——绝不进版本库
+.env
+*.key
+*.pem
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# 数据库/本地产物（可重新生成）
+*.db
+*.db-journal
+*.sqlite
+
+# IDE / 系统
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

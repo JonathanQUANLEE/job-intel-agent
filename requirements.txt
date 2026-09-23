@@ -1,0 +1,7 @@
+requests>=2.31
+beautifulsoup4>=4.12
+numpy>=1.24
+langgraph>=0.2
+fastapi>=0.115
+uvicorn>=0.30
+pytest>=8.0
