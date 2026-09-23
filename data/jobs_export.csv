@@ -1,0 +1,421 @@
+﻿job_id,source,title,location,category,url,raw_text,fetched_at
+hn-49745940,hackernews,Astra for Law,,tech-news,https://openai.com/index/astra-for-law/,,2026-09-18T16:04:01
+hn-49746618,hackernews,Bonsai 2 27B: Near-Lossless Compression in a 9x Smaller Footprint,,tech-news,https://prismml.com/news/bonsai-2-27b,,2026-09-18T16:04:01
+hn-49749656,hackernews,Hacking OpenAI,,tech-news,https://www.hacktron.ai/blog/hacking-openai,,2026-09-18T16:04:01
+hn-49750094,hackernews,The scourge of x86 emulation,,tech-news,https://fex-emu.com/Scourge-of-emulation/,,2026-09-18T16:04:01
+hn-49750152,hackernews,Jemalloc 5.4.0,,tech-news,https://github.com/jemalloc/jemalloc/releases/tag/5.4.0,,2026-09-18T16:04:01
+tencent-10001632,tencent,"Senior Researcher, Natural Language Processing",新加坡,,https:////tencent.wd1.myworkdayjobs.com/Tencent_Careers/job/Singapore-CapitaSpring/Senior-Researcher--Natural-Language-Processing_R104225,"Responsible for NLP research and development including Chinese word segmentation, part-of-speech tagging, sentence analysis, and named entity recognition.
+Responsible for text classification, sentiment analysis, data mining, text generation, topic analysis, label extraction, and other research and development job.
+Optimize existing online algorithms, develop efficient and reliable NLP solutions by combining business needs and data.
+Explore applications of NLP techniques and deep learning algorithms in games.
+Follow the latest developments in academia and industry and quickly apply findings in your work.
+Work Location: Singapore-CapitaSpring",2026-09-23T10:42:07
+tencent-10002205,tencent,"Senior Researcher, Natural Language Processing",伦敦,,https://tencent.wd1.myworkdayjobs.com/Tencent_Careers/job/UK-London/Senior-Researcher--Natural-Language-Processing_R105817-1,"1. Responsible for NLP research and development including LLM reasoning, conversational agents, machine translation, part-of-speech tagging, sentence analysis and named entity recognition.
+2. Optimize existing online algorithms, develop efficient and reliable NLP solutions by combining business needs and data.
+3. Explore applications of NLP techniques and deep learning algorithms in games.
+4. Follow the latest developments in academia and industry and quickly apply findings in your work.
+Work Location: UK-London",2026-09-23T10:42:07
+tencent-10002937,tencent,Agent Security Expert,新加坡,技术,https://tencent.wd1.myworkdayjobs.com/Tencent_Careers/job/Singapore-CapitaSky/Agent-Security-Expert_R107950,"Business Unit
+Cloud & Smart Industries Group (CSIG) is responsible for promoting the company's cloud and industry Internet strategy. CSIG explores the interactions between users and industries to create innovative solutions for smart industries via technological advancements such as cloud, AI, and network security. While driving the digitalization of retail, medical, education, transportation and other industries, CSIG helps companies serve users in smarter ways, building a new ecosystem of intelligent industries that connect users and businesses.
+
+What the Role Entails
+We are building the next-generation Agent security product to protect enterprise AI workloads at scale. As our Agent Security Expert, you will define the technical architecture for real-time agent defense and lead the product's security roadmap in a fast-emerging global market. You will work at the intersection of application security, AI safety, and systems engineering, shaping how enterprises safely deploy autonomous agents across their digital infrastructure.Own the end-to-end technical architecture of our Agent security product, making principled trade-offs across detection coverage, latency, and operational overhead.
+Design and implement runtime guardrails — including prompt injection defense, unauthorized tool-call interception, behavioral drift detection, and real-time credential leak prevention.
+Architect MCP and tool-chain supply-chain security capabilities against tool poisoning, cross-origin privilege escalation, and transitive trust abuse.
+Build an automated agent red-teaming pipeline to continuously discover vulnerabilities, generate adversarial test cases, and harden defenses before production deployment.
+Partner with product, engineering, and threat intelligence teams to translate emerging attack patterns into shipped security features, and mentor junior engineers on security-first design.
+
+Who We Look For
+8+ years of hands-on experience in security engineering, systems engineering, or a closely related field, with a track record of shipping production security components.
+Deep expertise in at least two of: application security, cloud-native security, identity and access management (IAM), or offensive/defensive security operations.
+Proficient in at least two of Go, Python, Rust, or C++, with experience building high-concurrency security services or detection pipelines.
+Strong working knowledge of the LLM/Agent stack — RAG architectures, function calling, MCP protocol, and mainstream agent frameworks — and the unique attack surfaces they introduce.
+Experience researching or shipping enterprise security products (EDR, CNAPP, AI-SPM, or equivalent); familiarity with sandboxing, eBPF, or container/virtualization isolation is a strong plus.
+
+Equal Employment Opportunity at Tencent
+As an equal opportunity employer, we firmly believe that diverse voices fuel our innovation and allow us to better serve our users and the community. We foster an environment where every employee of Tencent feels supported and inspired to achieve individual and common goals.
+Work Location: Singapore-CapitaSky",2026-09-23T10:41:56
+tencent-10002954,tencent,"Product Manager, WorkBuddy Enterprise — Agent Platform",新加坡,产品,https://tencent.wd1.myworkdayjobs.com/Tencent_Careers/job/Singapore-CapitaSky/Product-Manager--WorkBuddy-Enterprise---Agent-Platform_R108009,"Business Unit
+Cloud & Smart Industries Group (CSIG) is responsible for promoting the company's cloud and industry Internet strategy. CSIG explores the interactions between users and industries to create innovative solutions for smart industries via technological advancements such as cloud, AI, and network security. While driving the digitalization of retail, medical, education, transportation and other industries, CSIG helps companies serve users in smarter ways, building a new ecosystem of intelligent industries that connect users and businesses.
+
+What the Role Entails
+The Product Manager, WorkBuddy Enterprise —  will own the enterprise roadmap and customer success strategy for the WorkBuddy Enterprise platform, including WorkBuddy, CodeBuddy, and Managed Agents. This role drives the platform’s competitive positioning in the global enterprise AI market, covering the full lifecycle from architectural design to production-grade delivery for key enterprise customers.Define and own the enterprise product roadmap and go-to-market strategy for WorkBuddy Enterprise, driving platform competitiveness and customer adoption across international markets while aligning with business growth and commercial targets.
+Lead the ecosystem and integration strategy for enterprise Skills, MCP, and Connector frameworks, enabling seamless interoperability across third-party, customer-built, and ecosystem services to support enterprise agent and digital employee deployments.
+Establish reliability and evaluation (Eval) infrastructure, including eval harnesses, agent safety guardrails, trajectory replay, production telemetry, and automated regression testing, to elevate Proof of Concept success rates to production-grade standards.
+Partner with sales and solutions teams to build a structured key-account delivery system, distilling implementation experience from top enterprise customers into reusable templates and best practices that accelerate time-to-value.
+Manage product cost structures, resource planning, and compliance readiness across deployments, ensuring enterprise-grade data residency, tenant isolation, audit logging, and alignment with regional security and certification requirements.
+
+Who We Look For
+At least six years of product management experience, including at least three years in AI platforms, cloud platforms, developer tools, or enterprise SaaS, with a proven track record of independently owning platform products (PaaS, SDK, API, or SaaS) for enterprise customers.
+Demonstrated commercial acumen with hands-on experience across the full product lifecycle, from product definition and design to go-to-market optimisation, including familiarity with ARR, gross margin, net revenue retention (NRR), and paid conversion metrics.
+Deep understanding and practical use of AI and large language model products from providers such as Anthropic, OpenAI, Google, AWS, and Microsoft, together with knowledge of agent orchestration engineering and product design trade-offs.
+Strong enterprise platform knowledge, including SSO, SCIM, RBAC, data residency, tenant isolation, and audit logging, with familiarity with domestic and international security compliance frameworks and certification processes.
+Professional proficiency in English and Chinese, both written and verbal, is required to lead customer-facing engagements and product discussions in English with international enterprise clients, and to collaborate effectively with Chinese-speaking R&D, product, and commercial stakeholders at China headquarters.
+
+Equal Employment Opportunity at Tencent
+As an equal opportunity employer, we firmly believe that diverse voices fuel our innovation and allow us to better serve our users and the community. We foster an environment where every employee of Tencent feels supported and inspired to achieve individual and common goals.
+Work Location: Singapore-CapitaSky",2026-09-23T10:41:56
+tencent-10002979,tencent,Agent开发工程师,深圳,技术,https://tencent.wd1.myworkdayjobs.com/Tencent_Careers/job/China-Shenzhen/Agent_R108051-1,"团队介绍
+腾讯游戏商务部的主旨是建立腾讯与全球优质厂商的桥梁，服务与全球100+投资伙伴和重要厂商。持续扩大腾讯在全球互联网生态和游戏行业的影响力，利用敏锐的嗅觉捕捉高潜力商业合作机会，并帮助投资伙伴持续的成长。深耕亚太、欧美和新兴市场，与日本、韩国、美国、英国、法国、芬兰、德国等成熟市场和东南亚、中东、土耳其等新区域的伙伴建立了深度的战略合作关系，实现商业上的共赢。
+商务部期待全球的优秀人才一同加入，通过全球的优质人才网络巩固和扩大腾讯与全球合作伙伴的合作关系，并为市场孵化更多优质的游戏产品。
+
+岗位职责
+1.负责部门 Agent 产品研发，与业务、Agent 产品及运营团队紧密合作，将业务需求转化为可实现、可验证、可量化的技术方案，承担架构设计、前后端开发、测试、部署及持续迭代的完整闭环。2.负责 Agent 核心能力建设，包括企业知识库、RAG、记忆系统、工具调用、业务 Agent、MCP，以及 Multi-Agent 与人机协作流程的设计和实施。
+3.负责 Agent 与腾讯内部基础设施及产品的集成，包括模型与 Agent 平台、权限身份体系、知识库及数据平台，并通过 API、SDK、MCP等方式建设稳定、可复用的连接能力。
+4.建设部门 Agent Benchmark、评测与可观测体系，通过自动化评测、回归测试、Tracing、日志监控和反馈闭环，持续优化任务成功率、生成质量、稳定性、响应速度及成本。
+5.建设生产级工程与安全保障体系，包括 CI/CD、自动化测试、灰度发布、故障恢复、权限控制、操作审计和数据隔离，保障 Agent 产品安全稳定运行。
+
+岗位要求
+1.本科及以上学历，5 年以上软件研发经验，具备复杂系统或产品从0到1交付经验；能力和作品突出者可适当放宽。2.熟练掌握 JavaScript/TypeScript，熟悉 React 或 Vue 中至少一种主流前端框架。熟练使用 Python、Go、Java或基于 Node.js 的服务端开发技术，熟悉 API、数据库、缓存及异步任务，具备独立全栈交付能力。3.理解 Agent Loop、Memory、Tool Calling、RAG、MCP、Planning及 Multi-Agent 等技术，并具备实际 Agent 项目开发或生产落地经验。4.具备良好的工程、产品和跨团队协作能力，重视代码质量、测试、可观测性、安全性及上线结果，能够熟练使用 AI Coding 工具提升研发效率。加分项
+生产级 Agent、开发者工具或企业知识助手的落地经验。
+企业知识图谱、agent/LLM评测或反馈数据闭环经验。
+企业数据库系统建设，多来源数据库治理经验。
+
+腾讯致力于提供平等就业机会
+在腾讯，我们始终秉承平等就业机会的原则，致力于为每一位员工打造公平、包容的工作环境。我们坚信，多元的声音能够激发出无限的创新活力，推动我们为用户和社会提供更优质的服务。我们用心营造一个充满支持与激励的氛围，帮助每一位员工找到属于自己的舞台，以实现个人及共同的发展目标。
+Work Location: China-Shenzhen",2026-09-23T10:41:56
+tencent-110841,tencent,元宝-LLM大模型推理工程师,北京,技术,http://careers.tencent.com/jobdesc.html?postId=1902190189934100480,"1.参与服务业务场景的llm大模型部署、运维、推理优化开发等相关工作；
+2.负责推理加速方法的工程实现和落地，包括但不限于模型剪枝、模型量化、动态batch等方法；
+3.调研前沿技术，推动稀疏化推理、异构推理、分布式推理等技术在搜索业务中的集成应用。",2026-09-18T16:04:14
+tencent-111550,tencent,混元大模型评测算法研究员（北京）,深圳,技术,http://careers.tencent.com/jobdesc.html?postId=1915233782491881472,"1.负责通用AI大模型相关的评测与应用的规划、落地以及平台化能力建设，包括但不限于：；
+2.通用AI大模型评测基准的构建：建立覆盖文生文、多模态理解、多模态（音视频/3D/图/视频生成）生成等模态的评测基准，设计全面、准确的多维度指标，构建自动化评测工具链，并随着模型能力的演进持续探索全模态的评测基准；
+3.评测数据的自动化生产能力构建：基于数据泛化等能力，构建领域增强型评测数据集生产链路，支持多模态场景的自动化数据扩增与效果验证；
+4.自动化评测与归因分析：探索并实现各个模态大模型的自动化评测与模型缺陷归因机制。",2026-09-23T10:42:04
+tencent-111552,tencent,策略算法工程师,深圳,技术,http://careers.tencent.com/jobdesc.html?postId=1915242132004782080,"1.负责智能体 Harness Engineering 核心能力建设，包括 Agent Loop、多 Agent 协作、Memory、Skill、任务规划、工具调用、状态管理、异常恢复等关键模块设计与实现，提升 Agent 稳定性、可控性与任务完成质量；
+2.负责 Prompt Engineering 与 Prompt 调优，提升智能体在复杂企业场景下的准确性、鲁棒性和可解释性；
+3.使用 Go/Python 构建高并发 Agent 服务框架与调度系统，包括任务编排、工作流引擎、队列消费、资源调度和稳定性治理；
+4.建设智能体评估与观测体系，包括任务成功率、工具调用准确率、成本、延迟、TTFT、上下文利用率、可解释性等核心指标；
+5.持续分析 Bad Case，定位 Agent 在规划、工具调用、上下文、记忆、Prompt、模型能力等环节的问题，并推动优化迭代；
+6.与产品、平台和业务团队协作，交付面向企业场景的高质量智能体能力。",2026-09-23T10:42:00
+tencent-112378,tencent,微信小店-数据科学-治理方向,广州,技术,http://careers.tencent.com/jobdesc.html?postId=1927639153244217344,"1.负责微信电商治理的数据分析，问题洞察发现，保障微信电商体系下的用户安全购物体验及公平合规的商家达人经营环境；
+2.搭建电商系统运营及治理指标体系，运用统计学知识，刻画治理策略对微信电商生态的影响；
+3.利用 abtest、因果推断等方法驱动运营决策。",2026-09-23T10:42:04
+tencent-112871,tencent,微信小店-推荐算法工程师,广州,技术,http://careers.tencent.com/jobdesc.html?postId=1936827400029601792,"1.负责微信小店业务的推荐技术研发，包括但不限于召回、精排、重排，新用户冷启等；
+2.结合微信小店的业务特点，对推荐全链路上的模型进行效果优化以及推荐策略迭代，提升用户体验以及业务指标。",2026-09-23T10:42:00
+tencent-112872,tencent,微信小店-应用研究工程师-交易治理方向,广州,技术,http://careers.tencent.com/jobdesc.html?postId=1936827497983352832,"1.负责微信电商治理相关算法研发与应用，保障微信电商体系下的用户购物体验、公平合规的商家达人经营环境；
+2.负责微信电商生态下，商家、达人、短视频、直播、图文等等不同对象主体的理解、问题识别与画像构建；
+3.跟踪前沿技术并落地创新，处理海量数据，与产品团队协同提升运营业务效果；
+4.探索最前沿的AI技术，并落地到微信电商治理业务场景中。",2026-09-23T10:42:07
+tencent-114438,tencent,微信小店-高级推荐算法工程师,广州,技术,http://careers.tencent.com/jobdesc.html?postId=1960611768854269952,"1.负责微信小店的推荐技术研发，包括但不限于召回、精排、重排、冷启动等；
+2.负责微信小店核心场景的策略优化，钻研推荐算法的改进和调优，服务亿级电商用户；
+3.与产品、工程、运营团队深度合作，理解业务发展，参与制定推荐策略的目标。",2026-09-23T10:42:04
+tencent-115135,tencent,企业微信-机器学习平台调度工程师-（成都/北京）,广州,技术,http://careers.tencent.com/jobdesc.html?postId=1976128414842773504,"1.主导大规模GPU集群的全局资源调度，通过精细化管理和优化策略，显著提升资源利用率，确保离线和在线任务的高效稳定运行；
+2.深入优化RDMA高速网络、分布式存储与计算资源的协同调度，有效解决大规模训练任务中的性能瓶颈，提升整体计算效率；
+3.基于Kubernetes、Docker等云原生技术，构建高可用调度框架，全面支持分布式训练框架，实现任务编排、容灾与混部能力，并深入K8s调度器、CSI插件及CRD的开发，推动大规模训推技术的实际落地；
+4.积极探索混合云、虚拟化等异构计算等前沿方向，不断推动技术与平台能力的升级和创新。",2026-09-23T10:42:04
+tencent-117393,tencent,微信-大模型后训练算法专家,北京,技术,http://careers.tencent.com/jobdesc.html?postId=2013277866984366080,"1.负责大语言模型（LLM）推理能力的核心技术研发，包括数学推理、逻辑推理、知识推理和通用任务（如问答、翻译等）的算法研发、优化与创新，提升大模型在复杂场景下的高阶推理能力；
+2.跟踪推理领域的前沿技术，参与前沿算法研究，推动研究成果在业务场景的落地应用。",2026-09-21T18:44:47
+tencent-117674,tencent,《王者荣耀》游戏AI算法研究员- LLM/NLP方向,深圳,技术,http://careers.tencent.com/jobdesc.html?postId=2017980284246589440,1.负责LLM在王者荣耀及相关生态游戏领域应用， 能针对业务场景需求对模型进行设计和优化，包括但不限于剧情生成、可控NPC对话、社交聊天、逻辑推理、游戏盘面推理等。,2026-09-23T10:42:07
+tencent-117941,tencent,企业微信-AI应用后台开发工程师-业务挖掘和应用（成都/北京）,广州,技术,http://careers.tencent.com/jobdesc.html?postId=2026648959719735296,"1.负责企业业务知识的挖掘与构建，包括NLP信息抽取、业务流程建模、知识图谱构建与应用方案的设计与工程实现；
+2.基于业务挖掘能力构建智能化应用，结合大模型提升企业用户的业务效率与体验；
+3.协助业务团队落地LLM相关功能，拓展AI在企业业务场景中的应用能力矩阵；
+4.负责后台分布式高可用系统的开发与性能优化。",2026-09-23T10:42:07
+tencent-117997,tencent,大模型Code/Agent后训练算法研究员-(深圳)or(北京)or,上海,技术,http://careers.tencent.com/jobdesc.html?postId=2027548243965145088,"1.负责Code和Agent相关数据构建与治理，构建高质量、多样化的Code/Agent训练数据集，搭建数据迭代闭环，通过数据飞轮持续优化数据质量；
+2.负责Agent运行环境与训练环境的构建与优化，构建高可用、可扩展的Agent仿真环境，保障Agent训练、测试及落地的稳定性与高效性；
+3.负责Agentic RL在Code/Agent场景的训练，参与Agentic RL Infra建设及优化、Agentic RL 算法优化，持续提升Agentic RL训练的效率和稳定性。",2026-09-23T10:42:07
+tencent-118013,tencent,大模型存储研发工程师,深圳,技术,http://careers.tencent.com/jobdesc.html?postId=2027658886831570944,"1.负责大模型专用存储系统的设计研发，围绕大模型训练/推理场景构建一体化分层存储架构，无缝对接大模型训推框架：；
+2.架构设计与场景适配：通过系统性逻辑分析拆解大模型存储瓶颈，结合训推场景的数据流特征，设计分层存储架构，解决数据流转效率与一致性问题；
+3.推理性能极致优化：面向推理场景，通过全链路IO瓶颈的逻辑分析，结合CXL、RDMA、GPU Direct等高速互联技术，设计极致IO路径，实现数据高效传输，持续优化TTFT、TBT、并行吞吐等核心性能指标，解决推理延迟与并发瓶颈；
+4.训练场景稳定性保障：面向训练场景，通过对万卡接入、爆发式流量的模式分析与逻辑建模，设计高可靠、高吞吐的存储服务方案，解决长周期训练中的数据稳定性与性能波动问题。",2026-09-18T16:04:14
+tencent-118014,tencent,大模型存储研发工程师,北京,技术,http://careers.tencent.com/jobdesc.html?postId=2027658888916140032,"1.负责大模型专用存储系统的设计研发，围绕大模型训练/推理场景构建一体化分层存储架构，无缝对接大模型训推框架：；
+2.架构设计与场景适配：通过系统性逻辑分析拆解大模型存储瓶颈，结合训推场景的数据流特征，设计分层存储架构，解决数据流转效率与一致性问题；
+3.推理性能极致优化：面向推理场景，通过全链路IO瓶颈的逻辑分析，结合CXL、RDMA、GPU Direct等高速互联技术，设计极致IO路径，实现数据高效传输，持续优化TTFT、TBT、并行吞吐等核心性能指标，解决推理延迟与并发瓶颈；
+4.训练场景稳定性保障：面向训练场景，通过对万卡接入、爆发式流量的模式分析与逻辑建模，设计高可靠、高吞吐的存储服务方案，解决长周期训练中的数据稳定性与性能波动问题。",2026-09-18T16:04:14
+tencent-118274,tencent,微信-机器学习基础设施开发工程师（存储/向量检索/参数服务器）-系统架构方向,深圳,技术,http://careers.tencent.com/jobdesc.html?postId=2029746419665108992,"1.负责微信生态内机器学习基础设施组件的研发与维护，重点包括数据存储类组件（如FeatureKV、WeGraphDB、UnionDB）、向量检索系统（如SimOL）及参数服务器（如WePS）等核心模块的开发；
+2.深入分析业务需求，针对性优化组件的查询效率、写入吞吐量及资源利用率，持续提升系统性能表现；
+3.通过代码重构、架构改进等方式增强组件的易用性，降低业务接入门槛，同时保障高可用性，确保服务SLA达到99.9%以上；
+4.紧密结合微信推荐系统、大语言模型等业务的实际场景，收集用户反馈并迭代组件功能，解决业务落地过程中的技术瓶颈；
+5.参与技术方案评审与故障排查，输出高质量的技术文档，沉淀最佳实践经验。",2026-09-23T10:42:04
+tencent-118287,tencent,Agent可观测研发工程师,北京,技术,http://careers.tencent.com/jobdesc.html?postId=2029862287371825152,"1.负责腾讯云日志服务(CLS, Cloud Log Service)平台研发；
+2.大规模高并发分布式系统架构设计、优化研发；
+3.负责日志服务 Agent 可观测相关能力建设与落地，包括 AI Agent（如 AI Coding Agent、通用 Agent 框架）的 Logs/Traces/Metrics 数据采集、规范制定与 SDK 开发；
+4.参与日志数据接入、采集、投递等相关能力建设，支持 OTLP、Kafka 等多种协议接入；
+5.参与 GenAI 语义规范（OpenTelemetry GenAI Semantic Conventions）相关能力建设，推动 AI 可观测标准化落地；
+6.技术攻坚与指导：解决系统中最具挑战性的技术难题，并乐于指导团队其他工程师，共同营造追求技术卓越的工程师文化。",2026-09-23T10:41:56
+tencent-118613,tencent,轻量云OpenClaw AI Agent 高级工程师,深圳,技术,http://careers.tencent.com/jobdesc.html?postId=2034114862627581952,"1.负责开发者和中小企业场景下智能 Agent 系统的设计、开发与优化；
+2.结合 Lighthouse 与 OpenClaw 场景，参与 Agent 的部署、调优、评测与问题排查；
+3.负责提示词、工具调用、交互流程与 Agent 技能设计，提升任务执行效果；
+4.负责 RAG / Agentic RAG 及企业知识库接入与优化；
+5.将大模型能力封装为可复用的工具与组件，沉淀 AI 应用能力；
+6.编写技术文档，推动方案落地，并与产品、业务团队协作完成交付。",2026-09-23T10:41:56
+tencent-118711,tencent,大模型存储研发Leader/架构师,深圳,技术,http://careers.tencent.com/jobdesc.html?postId=2035012525405401088,"1.负责大模型专用存储系统的设计研发，围绕大模型训练/推理场景构建一体化分层存储架构，无缝对接大模型训推框架：；
+2.架构设计与场景适配：通过系统性逻辑分析拆解大模型存储瓶颈，结合训推场景的数据流特征，设计分层存储架构，解决数据流转效率与一致性问题；
+3.推理性能极致优化：面向推理场景，通过全链路IO瓶颈的逻辑分析，结合CXL、RDMA、GPU Direct等高速互联技术，设计极致IO路径，实现数据高效传输，持续优化TTFT、TBT、并行吞吐等核心性能指标，解决推理延迟与并发瓶颈；
+4.训练场景稳定性保障：面向训练场景，通过对万卡接入、爆发式流量的模式分析与逻辑建模，设计高可靠、高吞吐的存储服务方案，解决长周期训练中的数据稳定性与性能波动问题。",2026-09-18T16:04:14
+tencent-119309,tencent,机器学习平台调度工程师​​（北京/深圳/上海/杭州）,北京,技术,http://careers.tencent.com/jobdesc.html?postId=2043890038449799168,"1.主导万卡级GPU集群的全局资源调度，通过精细化管理和优化策略，显著提升资源利用率，确保离线和在线任务的高效稳定运行；
+2.深入优化RDMA高速网络、分布式存储与计算资源的协同调度，有效解决大规模训练任务中的性能瓶颈，提升整体计算效率；
+3.基于Kubernetes、Docker等云原生技术，构建高可用调度框架，全面支持分布式训练框架，实现任务编排、容灾与混部能力，并深入K8s调度器、CSI插件及CRD的开发，推动大规模训推技术的实际落地；
+4.积极探索混合云、虚拟化、ARM异构计算等前沿方向，不断推动技术与平台能力的升级和创新。",2026-09-23T10:42:04
+tencent-119422,tencent,QQ-高级算法工程师,深圳,技术,http://careers.tencent.com/jobdesc.html?postId=2044968720287297536,"1.AI Agent 算法研究方向：探索工具调用、模型规划、长记忆、意图识别等核心能力；研究多 Agent 协同机制，推动 Agent 在实际业务中的落地；
+2.多模态大模型研究与优化方向：主导多模态/全模态大语言模型的预训练、对齐与推理优化；推动图像、视频、文本等多模态理解与生成能力的持续演进；
+3.多模态内容理解与治理方向：构建面向复杂场景的多模态内容理解能力；建设生态内容治理算法体系，支撑业务侧的理解、分析与交互需求；
+4.图像/视频编辑与生成落地方向：研究并落地图像编辑、视频生成与编辑等 AIGC 能力。",2026-09-23T10:42:00
+tencent-119519,tencent,腾讯游戏平台-AI算法研究员-新星引力计划,深圳,技术,http://careers.tencent.com/jobdesc.html?postId=2046443162679013376,"1.结合游戏平台业务垂直场景，负责深度学习和大语言模型的训练精调、调优及部署，及智能体Agent开发；
+2.参与大规模平台用户行为数据集的ETL及特征工程，构建高效数据流水线，落地到用户画像体系并服务到线上AI应用；
+3.跟踪和研究前沿AI技术（如LLM、VLM、SFT、DPO、RAG、MCP等），推动技术落地业务发挥价值；
+4.与技术团队协作，优化算法模型和服务性能，满足产品AI价值落地要求。",2026-09-23T10:42:04
+tencent-119656,tencent,保险科技-大模型高级工程师,深圳,技术,http://careers.tencent.com/jobdesc.html?postId=2048599067382153216,"1.：负责保险大模型的Post-training全流程：包括SFT 监督微调、RLHF/DPO/GRPO 模型对齐、奖励模型（Reward Model）研发，提升模型在保险场景的专业问答、复杂推理、合规风控能力；
+2.：设计并建设保险领域高质量指令数据集（核保、理赔、健康咨询、保单解读、合规问答等），主导数据标注、清洗、过滤、蒸馏与质量评估，支撑模型迭代与能力升级；
+3.：基于Agentic-RL构建保险业务仿真环境与 API 对接体系，支持保单查询、理赔试算、核保校验、健康咨询等工具调用，提升模型在真实保险流程中的决策与执行能力；
+4.：搭建保险垂类自动化评测体系（事实准确率、合规率、推理深度、用户满意度），持续跟踪模型效果，驱动数据与算法迭代，保障模型在保险全链路（售前 / 售中 / 售后）的稳定落地。",2026-09-23T10:42:07
+tencent-119830,tencent,微信视频号-AIGC算法工程师,广州,技术,http://careers.tencent.com/jobdesc.html?postId=2052396002803105792,"1.负责视频号特效平台 AIGC 场景落地，完成图像模型、视频模型后训练工作；
+2.负责微信内 AIGC 多样化生图场景落地，优化图像模型真实感、指令精准度等效果，加快落地应用；
+3.研发在线模型训练方案，高效训练并显著提升 GPU 吞吐，支持业务垂类模型天级迭代更新；
+4.与产品、工程团队紧密协作，确保交付模型稳定运行，并持续可迭代支持更好业务结果；
+5.跟踪前沿AIGC技术，持续探索图像、视频等前沿模型落地方案。",2026-09-23T10:42:00
+tencent-119853,tencent,混元AI Agent Harness Engineer（北京/深圳））,北京,技术,http://careers.tencent.com/jobdesc.html?postId=2052685072754196480,"1.参与设计并实现 Agent 执行全链路的 tracing & observability 系统；
+2.参与构建 Agent 质量评估体系：自动化 eval pipeline、A/B testing、regression detection；
+3.开发 Agent debugging 工具；
+4.参与核心支撑平台（标注、SBS 评测、数据管道）的架构设计与开发；
+5.和 AI 研究团队零距离，能第一时间触碰最新的模型能力，并与团队紧密协作，将大模型与 Agent 协同进化的研究成果工程化落地；
+6.探索并实践 AI Agent的日常工作流。",2026-09-23T10:41:56
+tencent-119943,tencent,QQ-#高级推荐算法工程师#,深圳,技术,http://careers.tencent.com/jobdesc.html?postId=2053808955943206912,"1.负责空间公域推荐链路优化，针对业务特点进行算法优化，提升用户体验及消费数据；
+2.深入理解产品业务，洞察用户需求；工作内容包括不限于技术规划、case分析、数据挖掘、特征工程、模型开发、召回策略、排序策略；
+3.能够紧跟工业界、学术界的前沿技术，结合大模型技术，升级推荐模型，LLM4Rec、生成式召回等，提升推荐效果。",2026-09-23T10:42:00
+tencent-120062,tencent,元宝-LLM大模型推理工程师,深圳,技术,http://careers.tencent.com/jobdesc.html?postId=2055195929673383936,"1.负责开发和优化大模型推理框架；
+2.主要通过GPU、CUDA性能优化的手段，结合线上实际情况，优化高性能LLM推理引擎；
+3.负责大模型训练和推理前瞻性技术架构的调研和引入，技术方案不限于子图匹配、编译优化、模型量化等。",2026-09-18T16:04:14
+tencent-120101,tencent,《三角洲行动》-数据分析（经济安全方向）,深圳,产品,http://careers.tencent.com/jobdesc.html?postId=2056017577251090432,"1.负责产品经济安全（包括交易市场和对局环境模块）的分析体系搭建、检测模型设计，和相关工作的落地执行；
+2.根据游戏环境变化，基于数据、舆情和产品理解持续完善策略模型，及建立游戏安全风险预警机制；
+3.以数据和用户洞察为出发点，协同业务团队，完善安全产品功能，为玩家和产品安全体验负责。",2026-09-23T10:42:04
+tencent-120369,tencent,微信搜索-Agent算法专家,北京,技术,http://careers.tencent.com/jobdesc.html?postId=2062097072978575360,"1.参与微信搜索Agent能力优化，包括Search Agent（DeepSearch/DeepResearch）和真实世界复杂任务上的Agentic能力；
+2.跟进前沿技术：Mid-Train、SFT、GRM、PRM、RLVR、Agentic RL、Agent自进化、Context管理/Memory等；
+3.探索稳定高效的Agentic RL方案，探索下一代大模型结合Agent结合搜索的技术和产品范式。",2026-09-23T10:41:56
+tencent-120460,tencent,企业微信-评测算法工程师-（北京/成都）,广州,技术,http://careers.tencent.com/jobdesc.html?postId=2064239874424352768,"1.针对企业微信AI模型的特点，持续构建完善的评测基准，包括但不限于NLP、ASR、MLLM等领域，有效指导算法优化方向；
+2.负责评测数据的自动化生产能力构建：基于数据泛化等能力，构建领域增强型评测数据集生产链路，支持多模态场景的自动化数据扩增与效果验证；
+3.负责自动化评测与归因分析：探索并实现自动化评测与模型缺陷归因机制。",2026-09-23T10:42:04
+tencent-120521,tencent,微信-语音识别算法工程师,北京,技术,http://careers.tencent.com/jobdesc.html?postId=2064981110395420672,"1.负责语音识别模型的研发与优化，重点建设低延迟、高准确率的流式语音识别能力，支持实时对话、按住说话、语音助手等场景；
+2.负责流式 ASR 模型架构、训练和解码策略优化，包括 Streaming Conformer、CTC、Transducer、Attention 等技术方向；
+3.负责语音理解模型研发，提升模型对语义上下文、用户意图、实体、热词及多轮对话信息的理解和利用能力；
+4.负责热词和上下文增强能力建设，包括通讯录、人名、地名、应用名称、业务词汇及动态热词召回；
+5.负责中英混说、方言、口音、噪声、远场、重叠语音、轻声及非标准表达等复杂场景的识别优化；
+6.负责端点检测、流式上屏、结果稳定、标点预测、文本规整及上下文纠错等链路优化；
+7.负责大规模语音数据清洗、伪标注、难例挖掘和数据配比，持续提升模型泛化能力；
+8.建立语音识别与语音理解评测体系，推动模型训练、推理优化和产品上线。",2026-09-23T10:42:00
+tencent-120557,tencent,太极机器学习平台产品经理（深圳/北京./上海）,深圳,产品,http://careers.tencent.com/jobdesc.html?postId=2065347628102762496,"1.平台产品规划与设计：支持太极机器学习平台的产品战略规划与方案设计，覆盖数据处理、模型训练、服务部署全链路；深入理解大模型的训练/推理框架，算法pipeline；
+2.跨团队协同与交付：协同算法、框架工程、算力调度、数据等多技术团队，对齐跨部门需求与目标，推动解决研发协作中的关键卡点，保障平台功能迭代与基模训练任务的高质量、按时交付；
+3.产品迭代与体验优化：深度挖掘算法与研发团队的使用痛点，结合机器学习技术演进方向，制定平台迭代 roadmap，持续优化产品功能与用户体验。",2026-09-23T10:42:04
+tencent-120661,tencent,微信安全-风控算法工程师,广州,,http://careers.tencent.com/jobdesc.html?postId=2067515726658453504,"1.欺诈手法识别与对抗：深入研究微信生态内各类欺诈手法，建立欺诈行为识别体系，保障用户资金安全；
+2.智能风控体系建设：参与微信账号及支付场景的智能风控体系搭建，设计并优化风控策略架构，提升整体风险防控能力；
+3.风控模型开发：深度参与风控模型的特征工程、模型训练与迭代优化，覆盖用户画像、行为序列、图网络等多维度建模方向；
+4.实时风控方案落地：参与实时风控决策引擎的方案设计与工程落地，确保在高并发场景下的风险识别与拦截；
+5.智能分析工具构建：参与各类智能分析工具的设计与开发（如案例分析平台、风险态势感知、异常检测工具等），赋能风控运营与策略迭代；
+6.风险趋势研判：持续跟踪行业黑灰产动态及新型欺诈手法演变趋势，前瞻性地提出防控方案。",2026-09-23T10:42:00
+tencent-120794,tencent,腾讯游戏-AI方向资深商业分析师,深圳,战略与投资,http://careers.tencent.com/jobdesc.html?postId=2071425534142885888,"1.关注AI大模型等领域的最新动态、前沿技术突破和应用趋势，能够快速响应并及时整理和输出有价值观点；
+2.参与AI产品（AI图像/视频/3D/动画生成等）和游戏AI功能的深度测评，对技术架构、产品设计、用户体验等维度进行拆解，输出专业分析；
+3.针对AI技术与游戏领域的结合与应用（包括AI生成技术对游戏开发提效、AI驱动的玩法创新、AI与游戏的融合趋势等）进行分析研究，产出有洞察、可落地的结论，为管理层的策略制定提供支持。",2026-09-23T10:42:04
+tencent-120864,tencent,腾讯游戏-大模型评测专家,杭州,产品,http://careers.tencent.com/jobdesc.html?postId=2072330916012933120,"1.负责深度参与大模型前沿方向的数据工作，重点负责视频生成模型的数据标注与管理、模型效果评估；
+2.负责建设视频生成大模型的数据生产和质量提升流程，沉淀并建设起行业领先的数据生产标准；
+3.负责建立科学的模型效果评估方案与策略，保证对模型效果的正确评估，助力模型效果达到业内一流；
+4.与算法、数据等部门紧密合作，深入理解业务场景与大模型技术趋势，牵引数据团队和算法团队的深度融合。",2026-09-18T16:04:14
+tencent-120882,tencent,腾讯视频-Agent 技术负责人,北京,技术,http://careers.tencent.com/jobdesc.html?postId=2072477788216147968,"1.负责腾讯视频AIGC内容制作范式重塑,搭建具备行业竞争力的内容制作领域Agent 架构、技术底座与交付机制，支撑业务agent持续创新与规模化落地；
+2.主导腾讯视频影视、动画、漫剧等内容生产链路Agent技术规划与体系建设，深入理解行业场景与业务诉求，持续提升业务价值；
+3.建设高可用、可演进的工程体系，统筹知识库底座、模型能力、任务规划、记忆机制、评估体系、服务治理等关键模块，持续优化系统产品质量及成本结构；
+4.推动前沿 AI 技术在业务中的落地转化，结合大模型、Multi-Agent、多模态交互等方向，形成面向内容制作场景下的技术突破与产品创新。",2026-09-23T10:41:56
+tencent-120971,tencent,腾讯云DataBuddy-Agent研发专家,深圳,技术,http://careers.tencent.com/jobdesc.html?postId=2074111273825648640,"1.负责DataBuddy整体Agent运行框架的设计、开发与技术演进,并构建Agent整体的可观测性体系、评测体系；
+2.深度结合AI能力，建设AI原生的数据智能平台,探索和落地GenAI+大数据的融合场景；
+3.负责Agent运行框架、上下文工程、记忆、agent自进化等模块,优化DataBuddy的效果、执行效率；
+4.负责DataBuddy底层图谱构建,并构建知识挖掘体系。",2026-09-23T10:41:56
+tencent-1210752707245129728,tencent,NLP Research Intern 106758,伦敦,技术,https://tencent.wd1.myworkdayjobs.com/Tencent_Careers/job/UK-London/NLP-Research-Intern_R106758-1,"Business Unit
+LIGHTSPEED STUDIOS is made up of passionate players who advance the art & science of game development through great stories, great gameplay, and advanced technology. We are focused on bringing next generation experiences to gamers who want to enjoy them anywhere, anytime, across multiple genres and devices.
+
+About the Hiring Team
+Lightspeed Tech Center is a R&D department under Lightspeed Studios which develop PUBG Mobile and other high-quality games. Our Tech Center leads the research, exploration, and discovery of innovative technologies and provides technical services for all games during all phases of life cycle, including engine, audio, QA, AI, next generation game, technical cooperation, etc.
+
+What the Role Entails
+LightSpeed Studios is one of the world’s most innovative and successful game developers. With team across China, United States, Singapore, Canada, United Kingdom, France, Japan, South Korea, New Zealand, and United Arab Emirates. We are expanding to more countries.
+Founded in 2008, LightSpeed Studios has created over 50 games across multiple platforms and genres for over 4 billion registered users. It is the co-developer of worldwide hits PUBG MOBILE, Apex Legends Mobile, and League of Legends: Wild Rift (Chinese Version).1. Drive and contribute to cutting-edge research projects in NLP/ML.
+2. Develop benchmarks and baselines using publicly available datasets.
+3. Train large language models (LLMs) on innovative, practical tasks.
+4. Publish research findings at leading NLP/ML/AI conferences and in top journals.
+
+Who We Look For
+1. Currently in the PhD degree in NLP, Machine Learning, or a related area, or recently submitted the thesis; available at least three days per week (with the supervisor and university approval). Candidates who have completed a Master's degree and have received a PhD offer in a relevant field will also be considered.
+2. At least one publication in a top-tier NLP/ML conference or journal (e.g., ACL, NAACL, EMNLP, EACL, NeurIPS, ICLR, ICML).
+3. Hands-on experience with Python and deep learning libraries, especially PyTorch, Hugging Face, and Transformers.
+4. Experience in one or more of the following areas: supervised fine-tuning of LLMs, LLM self-learning, LLM efficiency, LLM-based AI agents, or LLM applications in gaming, reasoning, or mathematical tasks.
+
+Equal Employment Opportunity at Tencent
+As an equal opportunity employer, we firmly believe that diverse voices fuel our innovation and allow us to better serve our users and the community. We foster an environment where every employee of Tencent feels supported and inspired to achieve individual and common goals.
+Work Location: UK-London",2026-09-23T10:42:07
+tencent-121085,tencent,光子 AI-LLM 高级研究员-游戏智能体方向,深圳,技术,http://careers.tencent.com/jobdesc.html?postId=2075441482017456128,"1.负责构建基于大语言模型的 Agent 系统，并持续迭代优化其核心性能；
+2.联动游戏策划与研发团队，推动 LLM 智能体在在线游戏环境中的工程落地，兼顾低延迟、低成本与高品质的玩家互动体验；
+3.紧跟 LLM 在推理、规划、工具使用及记忆机制等方向的前沿技术发展，并针对游戏 Agent 场景进行定制化适配。",2026-09-23T10:42:07
+tencent-121101,tencent,微信安全-风控算法工程师,广州,,http://careers.tencent.com/jobdesc.html?postId=2076490658000060416,"1.识别和挖掘微信业务内的风险，制定安全风控策略与解决方案，保证微信生态用户的账号和支付安全；
+2.完善微信安全风控体系的建设，包括但不限于RAG等知识库的构建、基于大模型和Agent的应用、风险团伙的自动化挖掘扩散和效能工具的建设等。",2026-09-23T10:42:00
+tencent-121128,tencent,QQ-#社交推荐算法工程师#,深圳,技术,http://careers.tencent.com/jobdesc.html?postId=2076584243550666752,"1.优化QQ社交关系链相关业务推荐算法，提升用户体验及新增关系链等业务指标；
+2.深入理解产品业务，洞察用户需求，工作内容包括不限于需求沟通、case分析、数据挖掘、特征工程、模型改进、策略开发；
+3.能够紧跟工业界、学术界的前沿技术，基于QQ大规模社交图数据，结合大模型技术，升级算法模型，提升推荐效果。",2026-09-23T10:42:00
+tencent-121133,tencent,混元大模型海外数据采买产品经理,北京,产品,http://careers.tencent.com/jobdesc.html?postId=2076619146128437248,"1.负责海外优质商用/开源数据集、垂类专业数据源的挖掘、对接、测评与采买落地，覆盖预训练、SFT、多模态、代码、长文本等核心数据类型；
+2.建立海外数据技术准入标准，从数据质量、稀缺性、重复噪声、场景适配性做专业评估，筛选真正对模型有效增益的高价值数据；
+3.对齐预训练算法团队，根据模型能力短板，制定海外数据采买、补充、配比策略，精准支撑模型迭代；
+4.负责外购数据的格式适配、清洗去重、质检、版本管理，无缝对接内部预训练数据工作流，实现规模化复用；
+5.把控海外数据版权、隐私、跨境合规风险，搭建标准化海外数据准入与风控体系；
+6.沉淀海外供应商资源池与数据资产体系，持续优化数据采买、测评、治理流程，构建长期数据壁垒。",2026-09-23T10:42:07
+tencent-121194,tencent,微信小店-风控算法工程师,广州,,http://careers.tencent.com/jobdesc.html?postId=2077292986491912192,"1.设计、开发和优化机器学习模型，应用于微信小店及微信交易的内容审核、风险控制、商家行为监管和用户安全等治理场景；
+2.基于海量的数据，进行数据清洗、特征提取、模型训练和评估，提升平台违规行为检测的准确性和效率；
+3.参与反作弊、信息过滤、虚假交易检测等关键系统的算法研发和优化，维护平台生态健康。",2026-09-23T10:42:00
+tencent-121212,tencent,QQ-Agent产品经理,深圳,产品,http://careers.tencent.com/jobdesc.html?postId=2077347119940939776,"1.负责QQ Agent产品规划与迭代，构建以用户需求为中心的智能交互体验；
+2.深入理解用户场景，推动产品在消息提醒、好友状态感知、社交关系拓展等场景应用落地；
+3.结合用户行为与反馈，持续优化RAG、Tools、Memory等能力，提升Agent的精准性与个性化水平；
+4.协同算法、工程、设计等团队，高效推进产品方案从设计到上线的全过程。",2026-09-23T10:41:56
+tencent-121308,tencent,微信-后台开发高级工程师-机器学习工程方向,广州,技术,http://careers.tencent.com/jobdesc.html?postId=2078640022554324992,"1.研究AI模型推理加速技术在微信业务中的应用，参与TFCC服务平台和推理引擎的研发与优化，提升推荐模型、大模型、传统中小模型等业务场景的推理性能；
+2.负责微信后台AI算法的工程应用与优化，支持语音识别、语音合成、视觉理解、大语言模型等业务的后台工程开发与优化；
+3.跟进AI领域的最新动态，优化内部技术方案，提升平台性能，推进AI架构升级。",2026-09-23T10:42:04
+tencent-121319,tencent,智能体应用技术算法工程师,北京,技术,http://careers.tencent.com/jobdesc.html?postId=2079104781984645120,"1.智能体平台研发——负责智能体应用平台核心模块设计与开发，涵盖智能体编排、工具调用、记忆管理、多智能体协作等能力建设；构建支持复杂任务动态规划与自适应执行的工作流引擎，基于 Harness Engineering 与 Loop Engineering 技术实现行为约束、评测闭环及运维自愈等自主闭环场景；
+2.数据智能体建设——面向数据分析、治理、检索等场景，打通""自然语言提问 → 数据理解 → 分析推理 → 结果生成 → 决策辅助""完整闭环；融合 RAG、Text2SQL、知识图谱、语义层建模等技术，提升复杂查询生成、跨表关联推理、多轮问答与结果可信校验能力；围绕 SQL 正确率、业务口径准确性、数据安全合规等维度构建评测与反馈机制，持续优化效果；
+3.工程化落地与效果优化——负责智能体应用的工程化交付，涵盖效果优化、性能调优、可观测性建设与评测体系搭建；与业务团队协作推动方案在真实场景中落地并持续迭代；
+4.技术探索与创新——跟踪大模型与智能体领域前沿进展，围绕智能体自进化、效果与性能自动优化等方向持续提升平台智能化能力。",2026-09-23T10:42:00
+tencent-121413,tencent,AI大模型架构师,深圳,技术,http://careers.tencent.com/jobdesc.html?postId=2080544639538081792,"1.负责公司大模型（LLM/VLM/MoE等）的整体技术架构规划，参与千亿/万亿参数级别大模型的训练、推理全流程架构优化；
+2.优化大规模分布式训练系统（3D并行、ZeRO优化等），参与解决断点续训、通信瓶颈、显存优化等技术难题，提升稳定性和降低成本；
+3.规划公司AI基础设施，包括AI芯片、存储、通信等。参与大模型训练的全流程规划（数据处理、预训练、精调、强化、后训练等）。参与大模型推理的全流程规划（改写、压缩、多轮对话、Agent等）。",2026-09-18T16:04:14
+tencent-121515,tencent,WAND AI音视频算法工程师,深圳,技术,http://careers.tencent.com/jobdesc.html?postId=2082102980622069760,"1.提升多模态大模型的基础能力或下游任务能力，包括多模态理解、多模态生成和编辑、生成式图像&视频处理等方向的实际表现；
+2.在模型研发和算法链路上取得突破，在通用或特定场景下的性能表现取得行业领先优势，同时提升算法在实际业务中的稳定性，推动算法在实际业务上的落地；
+3.跟踪行业最新技术发展，探索行业领先技术在实际产品和业务上的应用和改进。",2026-09-23T10:42:00
+tencent-121631,tencent,微信-音乐生成算法工程师,北京,技术,http://careers.tencent.com/jobdesc.html?postId=2084242224543084544,"1.负责音乐等相关算法的研发与落地，包括音乐生成、音乐理解、音乐编辑等方向；
+2.参与生成模型的数据建设、预训练、后训练、效果评测和推理优化；
+3.与产品、数据及工程团队协作，建设完整的音乐数据管线，训练框架和推理链路；
+4.推动模型从实验阶段走向实际产品，持续提升生成结果的音质、自然度、音乐性、结构完整性和可控性；
+5.跟进音乐及音频生成领域的前沿技术，完成论文复现、模型验证及业务化改进。",2026-09-23T10:42:00
+tencent-121675,tencent,TEG招聘经理-大模型方向,深圳,人力资源,http://careers.tencent.com/jobdesc.html?postId=2085177266651967488,"1.根据公司人力资源规划制定部门招聘策略、招聘计划；
+2.负责相关领域的人力资源市场分析，有效管理及优化招聘渠道；
+3.负责相关部门的具体招聘工作，包括人才开源、甄选、吸引、录用等；
+4.定期进行招聘效果分析，输出招聘优化提升方案并推动落地。",2026-09-18T16:04:14
+tencent-121758,tencent,Agent Infra高级研发工程师,深圳,技术,http://careers.tencent.com/jobdesc.html?postId=2086743606953160704,"1.负责大模型 Agent 评估、强化学习和数据制造所需的大规模沙盒平台建设；
+2.负责面向模型训练/研究场景下 Agent 框架的研发与维护，支持强化学习、数据生成、自动化评估和实验复现等业务需求；
+3.解决高并发任务执行场景下全链路的性能、稳定性问题，与业务紧密协作，优化相关任务流程、建设配套的平台基础设施，保障训练/实验/评估等流程高效、准确执行；
+4.支持各类评估 bench 及运行环境接入。",2026-09-23T10:41:56
+tencent-121766,tencent,微信小程序-搜索算法工程师-Agent方向,广州,技术,http://careers.tencent.com/jobdesc.html?postId=2086789751029022720,"1.Agent 场景搜索算法研发：负责Agent 场景下的小程序搜索算法全链路研发，覆盖 Query 理解、多路召回、粗排、精排、重排等核心模块，构建面向 Agent 意图驱动的新一代搜索系统；
+2.大模型与搜索深度融合：负责大模型在搜索场景的落地与优化，包括但不限于： Query 改写模型的微调（SFT）与蒸馏；领域 Embedding 后训练；基于 Cross-Encoder / LLM 的 Rerank 模型训练；
+3.数据驱动的算法迭代：与工程团队紧密协作，设计搜索评估体系，构建训练数据飞轮，通过 A/B 实验持续优化搜索效果。",2026-09-23T10:42:07
+tencent-121799,tencent,微信视频号-投放算法工程师,北京,技术,http://careers.tencent.com/jobdesc.html?postId=2087371544719441920,"1.负责微信视频号投放算法的研发；
+2.包含商业化或生态投放目标的召回和精排算法、预算控制算法、出价机制的优化迭代；
+3.结合微信视频号的业务的实际特点，快速进行算法和策略迭代，不断提升投放效率。",2026-09-23T10:42:00
+tencent-121858,tencent,风控算法工程师,深圳,,http://careers.tencent.com/jobdesc.html?postId=2088194595539304448,"1.识别和挖掘腾讯流量的爬虫、自动机等机器流量风险，制定安全风控策略与解决方案，保证腾讯流量安全；
+2.完善流量安全风控体系的建设，包括但不限于RAG等知识库的构建、基于大模型和Agent的应用、风控策略的自动化挖掘和效能工具的建设等。",2026-09-23T10:42:00
+tencent-121860,tencent,AI产品经理-AI平台（Agent）方向,深圳,产品,http://careers.tencent.com/jobdesc.html?postId=2088450750270324736,"1.负责金融科技AI平台产品的规划、设计和迭代，覆盖 Agent 研发流程、观测、追踪、安全、调优及成本控制等方案；
+2.负责金融科技AI工具平台，挖掘技术/非技术用户内部场景痛点，完善产品能力；
+3.参与组织级研发体系升级，梳理并设计多角色 Agent协同产品解决方案；
+4.建立 AI 服务效果评估治理，通过数据、用户反馈和 Badcase 持续优化产品。",2026-09-23T10:41:56
+tencent-121893,tencent,机器学习平台交互设计（深圳）,深圳,设计,http://careers.tencent.com/jobdesc.html?postId=2089313246132744192,"1.全链路交互设计落地：负责太极平台Web端交互设计，包含需求拆解、信息架构梳理、流程梳理、原型设计、交互规则定义、异常场景、等完整交互方案输出，支撑核心业务迭代；
+2.体验优化与可用性提升：针对平台复杂操作流程、高频场景等痛点，持续优化交互体验，用数据分析用户路径、降低用户操作成本，提升平台易用性。并搭建建迭代平台交互规范、推动规范落地复用；
+3.需求研判与方案输出：深度参与产品需求评审、方案讨论，从交互视角评估需求合理性、流程可行性、提供专业优化建议；
+4.跨团队协同落地：对接产品、前端、后端、测试、算法团队，跟进设计还原、开发落地、测试验收，解决落地过程中的交互适配、兼容、逻辑问题，保障设计1:1高质量落地；
+5.用户研究与体验复盘：参与用户调研、可用性测试、线上体验问题复盘，，驱动产品持续迭代优化。跟进B端AI中台交互设计趋势，结合业务特性创新交互模式，沉淀行业可复用的复杂系统交互设计方法论。",2026-09-23T10:42:04
+tencent-121902,tencent,混元风控算法工程师（北京）,深圳,技术,http://careers.tencent.com/jobdesc.html?postId=2089619589012045824,"1.通过分析网络流量/用户行为数据，挖掘海量数据中的恶意行为，分析动机并制定打击策略，并转化为业务认可的价值；
+2.负责大模型业务相关的风控对抗工作的工程化落地，并保证线上策略效果持续运营；
+3.跟进业内SOTA，关注前沿安全对抗技术，结合业务需求进行落地。",2026-09-23T10:42:00
+tencent-121965,tencent,机器学习平台SRE工程师（深圳/北京）,深圳,技术,http://careers.tencent.com/jobdesc.html?postId=2090358653394796544,"1.负责机器学习平台的整体 SLA/SLO 定义、监控告警体系建设与故障应急响应，持续提升系统可用性，保障平台各个链路的稳定通畅；
+2.负责机器学习平台的架构治理，容灾设计，性能调优。对接AI训练链路、资源调度与存储能力，参与业务和系统的问题排查工作；
+3.负责运维运营工作自动化，借助AI能力来解决日常工作问题，包括资源管理、变更管理、故障恢复、用户工具诊断接口/mcp等。",2026-09-23T10:42:04
+tencent-122053,tencent,微信搜索-大模型算法工程师-搜索 Planner 方向,广州,技术,http://careers.tencent.com/jobdesc.html?postId=2091832458562682880,"1.负责搜索 Planner 的算法设计与研发，基于大模型构建 query 理解与改写系统，覆盖纠错、归一化、意图补全、语义扩展等场景；
+2.设计并构建 SFT / RLHF / DPO 训练数据 pipeline，包括数据采集、蒸馏、质量过滤与模板组装，探索数据合成等 AI-Native 数据生产方式；
+3.攻关大模型训练与对齐的关键难题，包括输出长度偏差、类别不平衡、训练-推理分布一致性等；
+4.设计高效推理链路，包括 constrained decoding、early stopping、多路改写并行召回，结合量化、KV Cache 优化等手段平衡效果与时延；
+5.以端到端业务指标为北极星，建立并持续优化评估体系，负责效果调优与 bad case 治理，形成评估、优化、上线、反哺的闭环。",2026-09-23T10:42:07
+tencent-122071,tencent,搜狗输入法-NLP算法工程师,北京,技术,http://careers.tencent.com/jobdesc.html?postId=2092134938500579328,"1.负责输入法打字拼音召回、排序、联想等核心算法研发与迭代，基于大模型技术持续优化用户输入体验与核心算法指标；
+2.独立拆解业务需求与用户体验痛点，负责大模型场景化算法方案设计、选型、落地与迭代，解决输入准确率不足、个性化适配弱、推理延迟高等核心问题；
+3.主导大模型轻量化落地工作，涵盖模型微调、量化蒸馏、Prompt优化、RAG应用、端侧推理优化等，平衡算法效果、推理速度与落地成本，保障线上稳定高效运行；
+4.负责算法全生命周期闭环，包含数据挖掘分析、bad case归因、模型训练、实验验证、灰度上线、效果复盘迭代，以数据驱动持续优化算法能力；
+5.跟进NLP与大模型前沿技术，结合输入法业务场景开展技术创新与专项攻坚，沉淀可复用的技术方法论与优化体系；
+6.配合团队完成技术规划与项目推进，协助带教校招新人，规范模块研发流程，赋能团队整体技术能力提升。",2026-09-23T10:42:00
+tencent-122101,tencent,企业微信-大模型算法工程师-企业经营分析（成都/北京）,广州,技术,http://careers.tencent.com/jobdesc.html?postId=2092279866727776256,"1、与数据、产品、工程等团队紧密配合，参与算法选型到模型优化的全流程，充分利用大模型从业务资料中挖掘潜在的经营模式和用户行为规律；
+2、专注用户行为理解和模式识别，利用社区发现、图模型、行为序列、LLM等技术进行用户画像分析、需求预测、营销策略优化、企业经营提效；
+3、跟进LLM以及agent相关前沿技术，推动技术框架持续迭代升级，保持行业同类竞品前沿水平；",2026-09-23T10:42:04
+tencent-122137,tencent,混元Agent数据策略分析岗（AI/Agent用户行为方向）（北京/深圳/上海）,北京,技术,http://careers.tencent.com/jobdesc.html?postId=2092600086931615744,"1.需求洞察：持续追踪 Coding Agent / AI 编程助手领域的需求变化，通过用户反馈、行为数据、市场调研等多源信息，识别开发者的真实痛点、未满足需求及新兴任务形态，，输出周期性需求洞察报告；
+2.UserLog 与 Agent 轨迹深度分析：对多轮对话、任务序列、工具调用和用户反馈进行深入分析，研究任务如何产生、演化和结束；识别模型在需求理解、规划、探索、执行、验证和交付等环节的困难点与失败机制；
+3.用户体验与Agent行为质量的观测：从 0 到 1 设计用户体验指标体系。除满意度、留存和问题解决率外，进一步研究沉没成本、用户情绪变化、Agent 可引导性等信号，建立常态化监测机制；
+4.探索性分析与假设验证：运用统计分析、聚类、大模型等方法，从海量用户数据中发现未被分类体系覆盖的新问题和新机会，主动提出「可能是什么问题 / 机会」的猜想，并设计验证方案去证实或证伪；
+5.数据看板与归因：搭建核心指标看板，持续跟踪关键指标变化，对异常波动进行归因分析，定位问题根因并给出改进建议；
+6.策略输入：将洞察转化为可执行的产品策略、模型优化方向和数据建设优先级，协助识别高价值训练样本、评测题、失败 Case、Rubric、Skill 等；
+7.跨团队协作：与算法、产品、工程团队紧密配合，推动洞察结论在产品中落地，并跟踪落地效果形成闭环。",2026-09-23T10:41:56
+tencent-122208,tencent,Agent安全专家,深圳,技术,http://careers.tencent.com/jobdesc.html?postId=2094685239933841408,"1.负责公司 Agent 安全产品的整体技术架构设计；
+2.设计运行时防护（Guardrails）与沙箱隔离机制：实时拦截提示词注入、未授权的工具调用、行为漂移及凭据泄露；
+3.构建 MCP / 工具供应链安全能力，防范工具投毒、跨源权限提升等同类威胁；
+4.搭建自动化的 Agent 红队测试体系，在漏洞进入生产环境前提前发现。",2026-09-23T10:41:56
+tencent-122227,tencent,腾讯营销-生成式推荐算法专家,北京,技术,http://careers.tencent.com/jobdesc.html?postId=2094760861490135040,"1.负责营销基础推荐算法多个重点方向的技术规划和团队管理，围绕大模型、Agent等前沿方向，结合千亿级样本、特征和用户行为数据，持续推动营销推荐建模技术升级和效果突破；
+2.基于超大规模样本和特征，探索用户兴趣建模、序列表征学习、生成式建模、统一建模等关键技术，实现前沿 AI 技术在营销推荐系统中的有效迁移，持续驱动营销核心指标提升；
+3.负责样本、特征、模型等核心能力建设，持续探索模型 scaling up、模型结构优化和训练推理优化等关键技术，不断提升模型效果、训练效率和泛化能力；
+4.推动多模态技术和生成式 AI 技术在广告场景中的应用，通过更丰富的信息理解和表达能力，持续提升营销推荐效果和内容生产效率；
+5.探索Agent在算法研发和业务场景中的应用，持续提升模型迭代效率和算法系统智能化水平；
+6.积极跟进 AI 学术界和业界的最新动态，优化内部技术方案，不断推进营销算法设计升级。",2026-09-23T10:42:04
+tencent-122266,tencent,产品管理Agent开发架构师,深圳,产品,http://careers.tencent.com/jobdesc.html?postId=2095317743191638016,"1.深入分析销售与架构师的日常工作链路和痛点，梳理产品选型、配置推荐、询价、折扣策略等核心场景，识别适合由 AI Agent 提效或自动化的环节；
+2.负责 Agent 的产品与技术方案设计并落地，包括平台选型、模型选型、skills 开发、多 Agent 架构、工具调用、知识库、安全控制、评测体系及可观测性建设；
+3.建立 Agent 评测体系，持续优化准确率、任务完成率、响应速度、调用成本和用户体验；
+4.跟踪并判断大模型及 Agent 技术的发展，将真正有业务价值的新技术引入产品。",2026-09-23T10:41:56
+tencent-122364,tencent,机器学习平台前端全栈工程师(（深圳/北京）,深圳,技术,http://careers.tencent.com/jobdesc.html?postId=2096784591401697280,"1.深度参与腾讯机器学习平台端到端的研发工作（前端视角为主），主导模型训练、评测、服务部署、数据管理及权限管控等核心链路的开发与迭代；
+2.负责前端底层架构的规划与搭建，打造高复用、可配置的前端构建体系，通过组件化与模板化手段提升研发效能与交互体验，增强系统的可扩展性；
+3.致力于通用能力的沉淀与工程化改造，建设标准化组件库与公共模块，推动平台技术能力的规范化与规模化输出；
+4.协同产品团队梳理复杂业务诉求，能独立承担核心模块的技术方案设计与落地，具备独立解决问题的自驱力与Owner意识。",2026-09-23T10:42:04
+tencent-122382,tencent,机器学习平台研发工程师（深圳/北京/上海）,深圳,技术,http://careers.tencent.com/jobdesc.html?postId=2096870601972166656,"1.负责大模型MaaS平台后端架构设计和研发，覆盖模型服务部署、编排、调用全链路，打造可复用、可扩展、可观测的MaaS平台；
+2.持续优化系统架构并响应业务需求，为司内海量业务提供高可用、高性能的模型服务部署与API接入能力；
+3.实现模型模板化一键部署，拓展多场景、多卡型、多推理框架部署能力；
+4.完善平台能力和易用性，支持各种异构卡、多种推理框架、部署形态的模板一键部署能力。",2026-09-23T10:42:04
+tencent-122405,tencent,应用效能技术部-#Agent 开发工程师#-Agent 平台方向,深圳,技术,http://careers.tencent.com/jobdesc.html?postId=2097203095237996544,"1.参与 Agent 平台的架构设计与核心能力建设，打造稳定、高效、易扩展的智能体开发与运行平台；
+2.建设 Agent 编排、模型与工具接入、知识与上下文管理、运行评测及可观测性等通用平台能力；
+3.深入理解业务场景，提炼共性需求并沉淀标准化、可复用的平台解决方案，提升 Agent 应用的开发与交付效率；
+4.负责核心系统的设计、开发与持续演进，解决高并发、高可用、性能优化及复杂系统集成等工程问题；
+5.跟踪大模型及 Agent 领域的技术发展，开展技术验证并推动有实际价值的能力落地；
+6.与产品、算法、测试及业务团队紧密协作，推动项目高质量交付并持续改善用户体验。",2026-09-23T10:41:56
+tencent-122480,tencent,WorkBuddy-Agent Harness 算法工程师,深圳,,http://careers.tencent.com/jobdesc.html?postId=2098252450778759168,"1.负责 WorkBuddy Harness 的整体效果与能力优化，协同内部团队，以用户真实任务表现为反馈，不断优化迭代 Harness 效果；岗位为研究和工程复合型，可以偏向其中一个方向，但需要对另一个方向有所了解，更倾向于两者兼顾；
+2.独立解决问题，提出原创性想法，从 0 到 1 驱动研究探索；同时拥有扎实的工程落地能力，打通从想法提出到落地实现的完整链路；
+3.可针对全新问题定义合理的评测与验证标准，搭建配套评测数据集；立足真实业务场景，保证智能体能力在现实环境下有效可用；
+4.包括但不限于以下研究方向：1）Harness Self‑Evolution 方向：研究 Harness 闭环自进化机制，自主迭代工具集、执行架构与多智能体协作范式，适配模型能力与业务场景演进；2）Context Engineering 方向：探索复杂场景下的上下文组织与编排，在模型窗口和 token efficiency 约束下引导模型聚焦关键信息，提升 Agent 任务表现；3）Multi‑Agent Coordination 方向：研究大规模分布式智能体协作，构建 Agent 集群化协作能力；4）Long‑term Memory 方向：研究 Agent 长期记忆、经验内化与自我迭代机制，形成稳定的行为模式与长期决策准则；5）Long‑Horizon 方向：研究长链路、稀疏反馈任务下的持续决策机制，降低长周期执行中的能力衰减；
+5.包括但不限于以下工程方向：1）Harness Self‑Evolution 方向：搭建 Agent 自进化 SDK 与平台，实现智能体自主迭代与持续能力升级；2）Context Engineering 方向：优化 Agent 上下文与提示工程，提升复杂场景下的适配能力与任务表现；3）Evaluation 方向：建设 Agent 多维度评测体系、数据集与基准，支撑 Agent 效果迭代和自进化。",2026-09-23T10:41:56
+tencent-122481,tencent,WorkBuddy-Agent Harness 研发工程师,深圳,,http://careers.tencent.com/jobdesc.html?postId=2098252452842352640,"1.负责 WorkBuddy Harness 的整体效果与能力优化，协同内部团队，以用户真实任务表现为反馈，不断优化迭代 Harness 效果；岗位为研究和工程复合型，可以偏向其中一个方向，但需要对另一个方向有所了解，更倾向于两者兼顾；
+2.独立解决问题，提出原创性想法，从 0 到 1 驱动研究探索；同时拥有扎实的工程落地能力，打通从想法提出到落地实现的完整链路；
+3.可针对全新问题定义合理的评测与验证标准，搭建配套评测数据集；立足真实业务场景，保证智能体能力在现实环境下有效可用；
+4.包括但不限于以下研究方向：1）Harness Self‑Evolution 方向：研究 Harness 闭环自进化机制，自主迭代工具集、执行架构与多智能体协作范式，适配模型能力与业务场景演进；2）Context Engineering 方向：探索复杂场景下的上下文组织与编排，在模型窗口和 token efficiency 约束下引导模型聚焦关键信息，提升 Agent 任务表现；3）Multi‑Agent Coordination 方向：研究大规模分布式智能体协作，构建 Agent 集群化协作能力；4）Long‑term Memory 方向：研究 Agent 长期记忆、经验内化与自我迭代机制，形成稳定的行为模式与长期决策准则；5）Long‑Horizon 方向：研究长链路、稀疏反馈任务下的持续决策机制，降低长周期执行中的能力衰减；
+5.包括但不限于以下工程方向：1）Harness Self‑Evolution 方向：搭建 Agent 自进化 SDK 与平台，实现智能体自主迭代与持续能力升级；2）Context Engineering 方向：优化 Agent 上下文与提示工程，提升复杂场景下的适配能力与任务表现；3）Evaluation 方向：建设 Agent 多维度评测体系、数据集与基准，支撑 Agent 效果迭代和自进化。",2026-09-23T10:41:56
+tencent-122482,tencent,WorkBuddy-Agent Harness 策略产品经理,深圳,产品,http://careers.tencent.com/jobdesc.html?postId=2098252455568654336,"1.负责 WorkBuddy Harness 的智能体策略优化，围绕用户场景、上下文流转和任务执行，设计并持续完善 Agent 策略体系；
+2.独立拆解复杂的智能体应用场景，提出原创性的产品与策略思路，打通从问题定义、策略设计、实验验证到效果复盘的完整链路；
+3.面向不同任务链路，在效果、稳定性与 Token Efficiency 之间取得合理平衡，推动产品目标达成；
+4.针对不同场景定义合理的效果评测与验证标准，搭建配套评测数据集，通过实验和数据持续验证策略效果；
+5.持续收集和分析用户反馈及线上数据，识别真实有效的优化方向，协同模型、工程、研究等团队迭代 Harness 效果。",2026-09-23T10:41:56
+tencent-122499,tencent,企业微信协作工具-评测算法工程师,广州,技术,http://careers.tencent.com/jobdesc.html?postId=2098283818011242496,"1.针对文档/微盘/邮箱等应用需求AI模型的特点，持续构建完善的评测基准，包括但不限于NLP、ASR、MLLM等领域，有效指导算法优化方向；
+2.负责评测数据的自动化生产能力构建：基于数据泛化等能力，构建领域增强型评测数据集生产链路，支持多模态场景的自动化数据扩增与效果验证；
+3.负责自动化评测与归因分析：探索并实现自动化评测与模型缺陷归因机制。",2026-09-23T10:42:04
+tencent-122515,tencent,Agent Harness 工程师,上海,技术,http://careers.tencent.com/jobdesc.html?postId=2098332758412804096,"1.Agent Harness 核心框架研发：负责 Agent 运行时的架构设计与实现，包括 agent loop 调度、Tool/Skill 抽象与注册机制、Context 组装与压缩策略、长任务的状态持久化与 checkpoint 恢复、Sub-Agent 并发编排、以及沙箱隔离与权限控制体系，为上层业务提供稳定、可扩展、可复用的 Agent 执行底座；
+2.全链路 Tracing 与 Observability：设计并实现 Agent 执行全链路的可观测系统，对 LLM 调用、工具调用、重试与降级、Token 与成本消耗、上下文膨胀等关键环节做 Span 级建模与结构化埋点；建设延迟/成本/成功率归因分析能力，沉淀 failure mode 分类体系与异常告警机制，让 Agent 的""黑盒行为""可解释、可回溯；
+3.Agent 质量评估体系：构建自动化 eval pipeline，覆盖离线 Benchmark、在线 A/B Testing、SBS 人工评测与 regression detection；设计任务级评测指标与 rubric（含 LLM-as-Judge、pass@k、轨迹级评分），建设评测集管理与 CI 门禁，使每次 Prompt、模型、工具变更都有量化的收益与回归判定；
+4.Agent Debugging 工具链：开发面向研发的调试工具，支持 Trace 回放与单步执行、上下文与 Prompt 的 Diff 对比、工具调用链可视化、失败样本最小复现集自动提取；打通从线上异常 Trace 到本地可复现调试的闭环，显著缩短 Agent 问题定位周期；
+5.支撑平台建设与工程化落地：参与标注平台、数据管道、任务集与轨迹数据仓库等核心支撑平台的架构设计与开发，为模型训练与 Agent 迭代提供高质量数据闭环；与 AI 研究团队零距离协作，第一时间承接最新模型能力，将大模型与 Agent 协同进化的研究成果工程化落地，并持续探索 AI Agent 在日常研发工作流中的深度实践。",2026-09-23T10:41:56
+tencent-122672,tencent,浏览器数据后处理算法工程师,深圳,技术,http://careers.tencent.com/jobdesc.html?postId=2100835547202367488,"1.针对浏览器端/云端协同交付场景，开发并优化包括网页长文本/复杂结构清洗、核心正文解析抽取、智能切片与摘要生成、元数据提取等关键能力，提升端到端处理质量与时延表现；
+2.深入探索小模型（1B~7B）的技术上限，在 Efficient Fine-Tuning、SFT、DPO/RLHF 对齐、模型量化压缩及长文本上下文扩展等方向持续迭代，探索端侧/低算力部署的最优解；
+3.联合数据团队搭建高质量后处理语料库构建流程，通过 Synthesizing Data（合成数据）与 Reward Model 精选数据集，持续提升模型在复杂变体网页上的泛化能力。",2026-09-23T10:42:00
+tencent-122673,tencent,浏览器数据后处理算法工程师,北京,技术,http://careers.tencent.com/jobdesc.html?postId=2100835549295325184,"1.针对浏览器端/云端协同交付场景，开发并优化包括网页长文本/复杂结构清洗、核心正文解析抽取、智能切片与摘要生成、元数据提取等关键能力，提升端到端处理质量与时延表现；
+2.深入探索小模型（1B~7B）的技术上限，在 Efficient Fine-Tuning、SFT、DPO/RLHF 对齐、模型量化压缩及长文本上下文扩展等方向持续迭代，探索端侧/低算力部署的最优解；
+3.联合数据团队搭建高质量后处理语料库构建流程，通过 Synthesizing Data（合成数据）与 Reward Model 精选数据集，持续提升模型在复杂变体网页上的泛化能力。",2026-09-23T10:42:00
+tencent-122676,tencent,大模型存储运维开发工程师,深圳,技术,http://careers.tencent.com/jobdesc.html?postId=2100835555658084352,"1.负责存储类产品的日常运维，如需求评估、发布变更、容量管理等日常运维工作，以及7×24小时服务稳定性保障；
+2.深度理解分布式存储产品架构与核心模块，参与产品需求技术评审和BCP治理，系统性挖掘现网风险隐患与性能瓶颈，制定完备的应急预案并组织定期演练；
+3.主导存储产品运维体系的持续演进，构建自动化运营工具与平台能力，基于SRE理念推进故障管理、变更管理、容量管理等核心工程实践与演进；
+4.探索AIOps方向的工程实践，包括基于机器学习的异常检测与告警降噪、容量趋势预测及资源管理，以及利用大模型辅助故障问题分析与运维知识沉淀；
+5.保持对运维及AI领域技术探索，推进自动化与智能化工具在运维场景的合理应用，提升平台稳定性与运维效率。",2026-09-18T16:04:14
+tencent-122678,tencent,大模型存储测试开发工程师,北京,技术,http://careers.tencent.com/jobdesc.html?postId=2100835560338927616,"1.负责分布式存储系统（分布式文件/对象/块存储）测试及测试开发工作；
+2.能够完成测试对象分析、测试策略与用例设计、测试程序与工具开发，并进行缺陷跟踪和软件质量分析；
+3.负责存储系统性能剖析与可靠性测试，开展全链路瓶颈定位及异常场景验证，推动研发闭环；
+4.保证被测系统的质量，并通过测试流程、方法和工具创新，持续提升研发的质量与效率；
+5.开展业界主流存储产品对标测试，为产品竞争力评估提供数据支撑。",2026-09-18T16:04:14
+tencent-1295762872273207296,tencent,NLP Research Intern 108056,首尔,技术,https://tencent.wd1.myworkdayjobs.com/Tencent_Careers/job/SKorea-Seoul/NLP-Research-Intern_R108056,"Business Unit
+LIGHTSPEED STUDIOS is made up of passionate players who advance the art & science of game development through great stories, great gameplay, and advanced technology. We are focused on bringing next generation experiences to gamers who want to enjoy them anywhere, anytime, across multiple genres and devices.
+
+About the Hiring Team
+Lightspeed Tech Center is a R&D department under Lightspeed Studios which develop PUBG Mobile and other high-quality games. Our Tech Center leads the research, exploration, and discovery of innovative technologies and provides technical services for all games during all phases of life cycle, including engine, audio, QA, AI, next generation game, technical cooperation, etc.
+
+What the Role Entails
+1. Contribute to and drive cutting-edge research projects in NLP and machine learning.
+2. Train large language models (LLMs) for new and practical tasks.
+3. Collaborate with team members from prototyping through production deployment.
+
+Who We Look For
+1. Hands-on experience with Python and deep learning frameworks.
+2. Publication experience at top-tier NLP/ML conferences or journals (e.g., ACL, NAACL, EMNLP, EACL, NeurIPS, ICLR, ICML) is preferred.
+
+Equal Employment Opportunity at Tencent
+As an equal opportunity employer, we firmly believe that diverse voices fuel our innovation and allow us to better serve our users and the community. We foster an environment where every employee of Tencent feels supported and inspired to achieve individual and common goals.
+Work Location: S.Korea-Seoul",2026-09-23T10:42:07
+tencent-97570,tencent,智能体-强化学习算法研究员-CodeBuddy/WorkBuddy,深圳,技术,http://careers.tencent.com/jobdesc.html?postId=1670301957484453888,"1.作为研究者，探索有效的 Agentic Workflow 和 Agentic Memory 设计来解决代码领域的问题；
+2.主要关注比SFT泛化效果更好的强化学习；能结合实际用户需求、产生的用户数据、agent的实现细节，调整训练语料和训练目标；
+3.能和agent开发高效沟通，设计memory存取逻辑，并且通过模型训练让模型适配自己设计的agent；
+4.作为工程师，考虑到 LLM inference 对推理算力的高消耗，设计出合理的前后端交互，前端架构，后端架构，在有限的推理算力下，做出完整的 Agentic Workflow 解决方案。最好是探索一套通用可扩展的 Agentic Workflow 解决方案；
+5.备注：base地可选深圳/北京/上海。",2026-09-23T10:42:07
