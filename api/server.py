@@ -1,12 +1,20 @@
-"""FastAPI 服务：POST /ask 返回 SSE 流式问答。
+"""FastAPI 服务：SSE 流式问答 + 岗位浏览 + 页面托管。
 
-为什么流式（SSE）而不是一次性 JSON？
+接口一览：
+  GET  /                 直接打开聊天界面（单文件 HTML，免构建）
+  POST /ask              SSE 流式问答（打字机效果）
+  GET  /jobs             岗位列表（关键词 + 城市筛选，浏览页用）
+  GET  /jobs/{job_id}    单个岗位完整 JD（详情弹窗用）
+  GET  /meta             城市分布、岗位总数、是否已配 Key（前端初始化用）
+
+为什么要流式（SSE）而不是一次性 JSON？
 生成一个完整回答要几秒，"打字机效果"把首字延迟从'整答完成'降到
 '第一个 token'，这是所有 AI 产品标配体验的原因。
 SSE = Server-Sent Events：HTTP 长连接上服务端单向推 event，
 比 WebSocket 简单（问答场景不需要双向）。
 
 事件协议（前端按 event 类型分流）：
+  event: meta     → 本次检索走的通道（vector/offline）+ 来源条数
   event: sources  → 检索到的岗位列表（回答前先亮证据）
   event: token    → 逐段回答文本
   event: done     → 结束标记
@@ -14,60 +22,28 @@ SSE = Server-Sent Events：HTTP 长连接上服务端单向推 event，
 """
 
 import json
-import sqlite3
-from contextlib import closing
+from pathlib import Path
 
 import requests
-from fastapi import FastAPI
-from fastapi.responses import StreamingResponse
+from fastapi import FastAPI, HTTPException, Query
+from fastapi.responses import FileResponse, StreamingResponse
 from pydantic import BaseModel, Field
 
-from rag.config import API_KEY, BASE_URL, LLM_MODEL
-from rag.embedder import embed_texts
+from crawler.storage import count_jobs, get_job, list_jobs, locations
+from rag import config as rag_config
+from rag.config import BASE_URL, LLM_MODEL, has_key
 from rag.llm import _SYSTEM_PROMPT
-from rag.store import search
+from rag.retriever import retrieve
 
-app = FastAPI(title="Agent 岗位情报站", version="0.1.0")
+app = FastAPI(title="Agent 岗位情报站", version="0.2.0")
+
+_INDEX_HTML = Path(__file__).with_name("index.html")
 
 
 class AskRequest(BaseModel):
     """请求体。Pydantic 在边界上做校验（缺字段/类型错 422 自动返回）。"""
     question: str = Field(min_length=2, max_length=200)
-    top_k: int = Field(default=3, ge=1, le=10)
-
-
-def _retrieve(question: str, top_k: int) -> list[dict]:
-    """检索 + 岗位去重 + 元数据补全（与 CLI 同策略，保证产品内行为一致）。"""
-    vec = embed_texts([question])[0]
-    raw = search(vec, "jobs.db", top_k=top_k * 2)
-    best: dict[str, tuple] = {}
-    for score, job_id, text in raw:
-        if job_id not in best or score > best[job_id][0]:
-            best[job_id] = (score, job_id, text)
-    ordered = sorted(best.values(), key=lambda h: h[0], reverse=True)[:top_k]
-
-    ids = [job_id for _, job_id, _ in ordered]
-    meta: dict[str, dict] = {}
-    if ids:
-        placeholders = ", ".join("?" * len(ids))
-        with closing(sqlite3.connect("jobs.db")) as conn:
-            rows = conn.execute(
-                f"SELECT job_id, title, location, url FROM jobs WHERE job_id IN ({placeholders})",
-                ids,
-            ).fetchall()
-        meta = {r[0]: {"title": r[1], "location": r[2], "url": r[3]} for r in rows}
-
-    return [
-        {
-            "job_id": job_id,
-            "score": round(score, 3),
-            "title": meta.get(job_id, {}).get("title", ""),
-            "location": meta.get(job_id, {}).get("location", ""),
-            "url": meta.get(job_id, {}).get("url", ""),
-            "text": text,
-        }
-        for score, job_id, text in ordered
-    ]
+    top_k: int = Field(default=5, ge=1, le=10)
 
 
 def _sse(event: str, data) -> str:
@@ -75,10 +51,75 @@ def _sse(event: str, data) -> str:
     return f"event: {event}\ndata: {json.dumps(data, ensure_ascii=False)}\n\n"
 
 
+@app.get("/")
+def index() -> FileResponse:
+    """把聊天界面直接托管出去——用户打开 http://127.0.0.1:8000 就能用。"""
+    if not _INDEX_HTML.exists():
+        raise HTTPException(404, "index.html 缺失")
+    return FileResponse(_INDEX_HTML)
+
+
 @app.get("/health")
 def health() -> dict:
     """健康检查：部署后先打这个确认服务活着。"""
-    return {"status": "ok", "llm_key": bool(API_KEY)}
+    return {"status": "ok", "llm_key": has_key(), "jobs": count_jobs()}
+
+
+@app.get("/meta")
+def meta() -> dict:
+    """前端初始化：岗位总数、城市分布、是否有 Key（决定界面提示文案）。"""
+    return {"jobs": count_jobs(), "locations": locations(), "has_key": has_key()}
+
+
+@app.get("/jobs")
+def jobs(
+    keyword: str = Query("", max_length=60),
+    location: str = Query("", max_length=30),
+    limit: int = Query(20, ge=1, le=100),
+    offset: int = Query(0, ge=0),
+) -> dict:
+    """岗位浏览：条件筛选 + 分页。"""
+    items = list_jobs(keyword=keyword, location=location, limit=limit, offset=offset)
+    return {"items": items, "limit": limit, "offset": offset, "count": len(items)}
+
+
+@app.get("/jobs/{job_id}")
+def job_detail(job_id: str) -> dict:
+    """单个岗位完整信息（详情弹窗）。"""
+    job = get_job("jobs.db", job_id)
+    if not job:
+        raise HTTPException(404, "岗位不存在")
+    return job
+
+
+def _fallback_answer(hits: list[dict]) -> str:
+    """没有 Key 时的本地作答：把检索结果组织成可读的推荐清单。
+
+    这不是"假回答"——它诚实声明"当前是本地离线模式"，
+    并逐条列出岗位、地点、相关度，对用户仍有真实价值（确实能定位岗位），
+    同时明确引导"配上 Key 可获得 AI 分析"，把降级变成转化引导。
+    """
+    if not hits:
+        return (
+            "没有检索到相关岗位。\n\n"
+            "可能原因：岗位库为空（先运行 `python -m crawler --source tencent "
+            "--keyword \"大模型\" --max-pages 3` 采集数据），或者换个说法再问一次。"
+        )
+    lines = [
+        "当前是**本地离线检索模式**（未配置 API Key，无法调用大模型做分析）。",
+        f"我按关键词相关度为你找到 {len(hits)} 个可能匹配的岗位：\n",
+    ]
+    for i, h in enumerate(hits, 1):
+        lines.append(
+            f"**{i}. {h['title']}**（{h['location']}｜相关度 {h['score']:.2f}）\n"
+            f"　{h['text'][:160].replace(chr(10), ' ')}…"
+        )
+    lines.append(
+        "\n---\n"
+        "想要 AI 逐条分析匹配度、指出技能差距？在项目根目录新建 `.env` 写入 "
+        "`SILICONFLOW_API_KEY=sk-xxx` 后重启服务即可。"
+    )
+    return "\n".join(lines)
 
 
 @app.post("/ask")
@@ -88,33 +129,38 @@ def ask(req: AskRequest) -> StreamingResponse:
 
     def gen():
         try:
-            if not API_KEY:
-                yield _sse("error", {"message": "服务端未配置 SILICONFLOW_API_KEY"})
-                yield _sse("done", {})
-                return
+            hits, mode = retrieve(req.question, "jobs.db", top_k=req.top_k, want_mode=True)
 
-            hits = _retrieve(req.question, req.top_k)
+            yield _sse("meta", {
+                "mode": mode, "has_key": has_key(), "n_sources": len(hits),
+            })
+
             if not hits:
                 yield _sse("sources", [])
-                yield _sse("token", "岗位库为空，请先运行采集与索引。")
+                yield _sse("token", {"text": "岗位库为空或没匹配到内容。"})
                 yield _sse("done", {})
                 return
 
-            # 先推来源：让前端在等待第一个字时就看到"依据"
-            yield _sse(
-                "sources",
-                [
-                    {
-                        "job_id": h["job_id"],
-                        "title": h["title"],
-                        "location": h["location"],
-                        "url": h["url"],
-                        "score": h["score"],
-                    }
-                    for h in hits
-                ],
-            )
+            # 先推来源：让前端在等第一个字时就看到"依据"
+            yield _sse("sources", [
+                {
+                    "job_id": h["job_id"], "title": h["title"], "location": h["location"],
+                    "company": h["company"], "department": h["department"],
+                    "experience": h["experience"], "url": h["url"], "score": h["score"],
+                }
+                for h in hits
+            ])
 
+            # 无 Key：走本地降级作答，把检索结果组织成清单推给前端
+            if not has_key():
+                text = _fallback_answer(hits)
+                # 按小块推，复刻打字机节奏（本地模式没有 token 流，这里造一个）
+                for i in range(0, len(text), 12):
+                    yield _sse("token", {"text": text[i : i + 12]})
+                yield _sse("done", {})
+                return
+
+            # 有 Key：正常走 LLM 流式生成
             snippets = "\n\n".join(
                 f"[{i + 1}] 岗位：{h['title']}（{h['location']}，编号 {h['job_id']}）\n{h['text']}"
                 for i, h in enumerate(hits)
@@ -123,11 +169,10 @@ def ask(req: AskRequest) -> StreamingResponse:
                 f"用户问题：{req.question}\n\n以下是检索到的真实岗位片段，请据此回答：\n{snippets}"
             )
 
-            # 流式调用：stream=True，逐行读 SSE，把每个增量 token 推出去
             with requests.post(
                 f"{BASE_URL}/chat/completions",
                 headers={
-                    "Authorization": f"Bearer {API_KEY}",
+                    "Authorization": f"Bearer {rag_config.API_KEY}",
                     "Content-Type": "application/json",
                 },
                 json={

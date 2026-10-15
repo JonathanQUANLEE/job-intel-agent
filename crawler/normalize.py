@@ -8,7 +8,10 @@
 from datetime import datetime
 
 # 统一 schema 的字段一览（README 里有说明表）
-FIELDS = ["job_id", "source", "title", "location", "category", "url", "raw_text", "fetched_at"]
+FIELDS = [
+    "job_id", "source", "title", "location", "category",
+    "company", "department", "experience", "url", "raw_text", "fetched_at",
+]
 
 
 def _base(source: str) -> dict:
@@ -25,10 +28,20 @@ def normalize_tencent(post: dict) -> dict:
     row["title"] = (post.get("RecruitPostName") or "").strip()
     row["location"] = post.get("LocationName") or "未知"
     row["category"] = post.get("CategoryName") or ""
+    # 接口里没有独立的公司名（都是腾讯），ComName 常为空；用产品线兜底更实用
+    row["company"] = (post.get("ComName") or post.get("ProductName") or "腾讯").strip()
+    row["department"] = (post.get("BGName") or "").strip()  # 事业群，如 TEG/CSIG
+    row["experience"] = (post.get("RequireWorkYearsName") or "").strip()  # 经验要求
     # PostURL 常见是相对路径（//careers.tencent.com/...），补全协议
     url = post.get("PostURL") or ""
     row["url"] = url if url.startswith("http") else f"https:{url}" if url else ""
-    row["raw_text"] = (post.get("Responsibility") or "").strip()
+    # 拼上 Requirement（详情接口补的）—— 索引和展示都以 raw_text 为准
+    resp = (post.get("Responsibility") or "").strip()
+    req = (post.get("Requirement") or "").strip()
+    if req and req not in resp:
+        row["raw_text"] = f"{resp}\n\n【任职要求】\n{req}".strip()
+    else:
+        row["raw_text"] = resp
     return row
 
 
@@ -39,6 +52,7 @@ def normalize_hackernews(item: dict) -> dict:
     row["title"] = (item.get("title") or "").strip()
     row["url"] = item.get("url") or ""
     row["category"] = "tech-news"
+    row["company"] = "Hacker News"
     row["raw_text"] = (item.get("text") or "").strip()
     return row
 

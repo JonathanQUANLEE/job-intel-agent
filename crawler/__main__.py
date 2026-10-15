@@ -1,18 +1,35 @@
 """CLI 入口：python -m crawler --source tencent --keyword "大模型"
 
-argparse 三个子功能：
+argparse 四个子功能：
   默认      抓取并入库
   --stats   看各来源条数
   --sample  抽样看数据
+  --export  导出 CSV 快照（给 GitHub 直接浏览 / 数据备份）
 """
 
 import argparse
+import csv
+import sqlite3
+from contextlib import closing
+from pathlib import Path
 
 from . import __version__
 from .http_client import build_session
-from .normalize import normalize
+from .normalize import FIELDS, normalize
 from .sources import fetch_hackernews_items, fetch_tencent_jobs
 from .storage import sample, save_jobs, stats
+
+
+def _export(db_path: str, out: str) -> None:
+    """把 jobs 表导出成 CSV 快照（UTF-8 BOM，Excel/GitHub 都不乱码）。"""
+    with closing(sqlite3.connect(db_path)) as conn:
+        rows = conn.execute(f"SELECT {', '.join(FIELDS)} FROM jobs ORDER BY job_id").fetchall()
+    Path(out).parent.mkdir(parents=True, exist_ok=True)
+    with open(out, "w", encoding="utf-8-sig", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(FIELDS)
+        writer.writerows(rows)
+    print(f"已导出 {len(rows)} 条岗位 → {out}")
 
 
 def main() -> None:
@@ -21,9 +38,11 @@ def main() -> None:
     parser.add_argument("--keyword", default="大模型", help="腾讯招聘搜索关键词")
     parser.add_argument("--max-pages", type=int, default=2)
     parser.add_argument("--max-items", type=int, default=20, help="HN 拉多少条")
+    parser.add_argument("--no-detail", action="store_true", help="跳过详情补全（快，但 JD 只有截断版）")
     parser.add_argument("--db", default="jobs.db")
     parser.add_argument("--stats", action="store_true", help="查看入库统计")
     parser.add_argument("--sample", type=int, default=0, metavar="N", help="抽样看 N 条数据")
+    parser.add_argument("--export", metavar="PATH", help="导出 CSV 快照，如 data/jobs_export.csv")
     parser.add_argument("--version", action="version", version=__version__)
     args = parser.parse_args()
 
@@ -37,9 +56,15 @@ def main() -> None:
             print(f"{job_id:<18} {location:<10} {title}")
         return
 
+    if args.export:
+        _export(args.db, args.export)
+        return
+
     session = build_session()
     if args.source == "tencent":
-        raw = fetch_tencent_jobs(session, args.keyword, args.max_pages)
+        raw = fetch_tencent_jobs(
+            session, args.keyword, args.max_pages, with_detail=not args.no_detail
+        )
     else:
         raw = fetch_hackernews_items(session, args.max_items)
 

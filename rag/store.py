@@ -30,7 +30,14 @@ CREATE TABLE IF NOT EXISTS jd_chunks (
 
 
 def _connect(db_path: str | Path) -> sqlite3.Connection:
-    conn = sqlite3.connect(db_path)
+    """连接配置与 crawler/storage 保持一致：手动事务 + WAL + 等锁超时。
+
+    两个模块操作同一个 db 文件，连接参数必须一致，
+    否则容易出现"一个连接写了、另一个连接读不到"的隐式事务问题。
+    """
+    conn = sqlite3.connect(db_path, timeout=15, isolation_level=None)
+    conn.execute("PRAGMA journal_mode=WAL")
+    conn.execute("PRAGMA synchronous=NORMAL")
     conn.execute(_SCHEMA)
     return conn
 
@@ -52,19 +59,27 @@ def save_chunks(
     embeddings: list[list[float]],
     db_path: str | Path = "jobs.db",
 ) -> None:
-    """一个岗位的全部片段入库。INSERT OR REPLACE：重跑同一岗位 = 覆盖，幂等。"""
+    """一个岗位的全部片段入库。INSERT OR REPLACE：重跑同一岗位 = 覆盖，幂等。
+
+    显式 commit + close：Windows 上残留连接会把 db 文件锁住，
+    导致后续查询读不到刚写入的数据。
+    """
     if not chunks:
         return
     rows = [
         (job_id, i, text, _pack(embeddings[i]))
         for i, text in enumerate(chunks)
     ]
-    with closing(_connect(db_path)) as conn, conn:
+    conn = _connect(db_path)
+    try:
         conn.executemany(
             "INSERT OR REPLACE INTO jd_chunks (job_id, chunk_index, chunk_text, embedding) "
             "VALUES (?, ?, ?, ?)",
             rows,
         )
+        conn.commit()
+    finally:
+        conn.close()
 
 
 def pending_jobs(db_path: str | Path = "jobs.db", force: bool = False) -> list[tuple]:

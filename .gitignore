@@ -9,10 +9,16 @@ __pycache__/
 .venv/
 venv/
 
-# 数据库/本地产物（可重新生成）
+# 数据库/本地产物（可重新生成；岗位数据请用 data/jobs_export.csv 快照共享）
 *.db
 *.db-journal
+*.db-wal
+*.db-shm
 *.sqlite
+
+# 评测报告（本地产物，数字随数据变化，不入库）
+evals/report.json
+.pytest_cache/
 
 # IDE / 系统
 .idea/
