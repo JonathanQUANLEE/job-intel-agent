@@ -1,0 +1,148 @@
+{
+  "version": "1.0",
+  "note": "决策质量评测集：验证择岗顾问的『行为』而非只验证『召回』。每条用例声明输入（含可选的跨轮画像）和一组期望行为断言，断言全部是确定性规则——不依赖 LLM 判卷，离线可跑、结果可复现。这是与 dataset.json（召回评测）互补的第二层评测：recall 回答『找得到吗』，decision 回答『行为对不对』。",
+  "cases": [
+    {
+      "id": "D1",
+      "desc": "信息完全缺失时必须追问，不能瞎检索",
+      "question": "帮我推荐些岗位",
+      "expect": {
+        "need_clarify": true,
+        "must_ask": ["城市", "哪一类岗位"],
+        "no_candidates": true
+      }
+    },
+    {
+      "id": "D2",
+      "desc": "只缺城市时必须只追问城市，不重复问已有信息",
+      "question": "我想找 Agent 开发方向的工作",
+      "expect": {
+        "need_clarify": true,
+        "must_ask": ["城市"],
+        "must_not_ask": ["哪一类岗位"]
+      }
+    },
+    {
+      "id": "D3",
+      "desc": "信息完整时直接给推荐，不问问题",
+      "question": "深圳 Agent 开发岗，会 Python 和 PyTorch",
+      "expect": {
+        "need_clarify": false,
+        "min_candidates": 1,
+        "min_recommendations": 1,
+        "sorted_desc": true
+      }
+    },
+    {
+      "id": "D4",
+      "desc": "多轮累积：上一轮的画像必须被继承，不丢条件",
+      "question": "Agent 开发方向，会 Python",
+      "profile_in": { "city": "深圳" },
+      "expect": {
+        "need_clarify": false,
+        "profile_contains": { "city": "深圳", "direction": "agent" }
+      }
+    },
+    {
+      "id": "D5",
+      "desc": "城市硬条件必须生效：深圳查询的推荐里不应出现大量非深圳岗位（弱对齐岗位除外）",
+      "question": "深圳 Agent 开发岗，会 Python",
+      "expect": {
+        "need_clarify": false,
+        "top1_city_is": "深圳"
+      }
+    },
+    {
+      "id": "D6",
+      "desc": "追问话术必须可执行：包含示例，用户知道怎么答",
+      "question": "随便看看",
+      "expect": {
+        "need_clarify": true,
+        "must_ask": ["城市", "哪一类岗位"]
+      }
+    },
+    {
+      "id": "D7",
+      "desc": "追问时不能触发检索（省资源、也让交互更干净）",
+      "question": "有什么好岗位吗",
+      "expect": {
+        "need_clarify": true,
+        "no_candidates": true
+      }
+    },
+    {
+      "id": "D8",
+      "desc": "技能差距建议必须给出：用户问技能匹配时要能指出该补什么",
+      "question": "深圳 Agent 开发岗，会 Python 和 Vue",
+      "expect": {
+        "need_clarify": false,
+        "has_gap_report": true,
+        "min_recommendations": 1
+      }
+    },
+    {
+      "id": "D9",
+      "desc": "推理轨迹必须完整：至少包含画像识别、检索、打分三个可解释步骤",
+      "question": "北京大模型推理岗，会 PyTorch",
+      "expect": {
+        "need_clarify": false,
+        "trace_contains": ["信息充足", "检索", "打分"]
+      }
+    },
+    {
+      "id": "D10",
+      "desc": "「不限」城市不应被当成硬约束过滤掉所有岗位",
+      "question": "城市不限，找 Agent 开发岗，会 Python",
+      "expect": {
+        "need_clarify": false,
+        "min_recommendations": 1
+      }
+    },
+    {
+      "id": "D11",
+      "desc": "方向归一：'大模型'与'LLM'应识别为同一方向族",
+      "question": "深圳找大模型方向的岗位",
+      "expect": {
+        "profile_contains": { "direction": "llm" }
+      }
+    },
+    {
+      "id": "D12",
+      "desc": "动词『推荐』不能被误判成推荐算法方向",
+      "question": "给我推荐几个岗位",
+      "expect": {
+        "profile_not_contains": ["direction"],
+        "need_clarify": true
+      }
+    },
+    {
+      "id": "D13",
+      "desc": "推荐结果里每个岗位都必须带可回查的编号和匹配分",
+      "question": "深圳 Agent 开发岗，会 Python",
+      "expect": {
+        "need_clarify": false,
+        "recommendations_have_fields": ["job_id", "score", "grade", "reasons"]
+      }
+    },
+    {
+      "id": "D14",
+      "desc": "应届生经验档位要能识别并参与打分",
+      "question": "深圳 Agent 开发岗，应届生，会 Python",
+      "expect": {
+        "need_clarify": false,
+        "profile_contains": { "experience": "应届/在校" },
+        "min_recommendations": 1
+      }
+    },
+    {
+      "id": "D15",
+      "desc": "多轮第二问：带着完整画像时不应再追问",
+      "question": "再帮我看看有没有别的",
+      "profile_in": { "city": "北京", "direction": "llm" },
+      "expect": {
+        "need_clarify": false,
+        "min_candidates": 0
+      }
+    }
+  ]
+}

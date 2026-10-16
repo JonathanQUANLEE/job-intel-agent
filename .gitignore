@@ -16,8 +16,16 @@ venv/
 *.db-shm
 *.sqlite
 
+# 前端调试用的 node 依赖（仅截图验证时临时装）
+node_modules/
+package-lock.json
+
+# 工作笔记 / 本地记忆
+.workbuddy/
+
 # 评测报告（本地产物，数字随数据变化，不入库）
 evals/report.json
+evals/decision_report.json
 .pytest_cache/
 
 # IDE / 系统

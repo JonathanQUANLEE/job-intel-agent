@@ -5,12 +5,15 @@
 （"我要调 search_jobs，参数如下"），由 graph.py 执行后回填。
 """
 
-import json
-
 import requests
 
 from rag.config import API_KEY, BASE_URL, LLM_MODEL
-from .tools import TOOLS_SPEC
+
+
+def has_key() -> bool:
+    """有没有配 Key。图里的 compose 节点靠它决定走模型润色还是模板兜底。"""
+    return bool((API_KEY or "").strip())
+
 
 SYSTEM_PROMPT = (
     "你是「Agent 岗位情报站」的求职顾问。岗位库里有真实采集的大模型/算法方向招聘岗位。\n"
@@ -25,43 +28,34 @@ SYSTEM_PROMPT = (
     "6. 用中文，先结论后依据，简洁，不要复述整个 JD。"
 )
 
+# 润色阶段的系统提示：只重组织、不改事实。
+# 为什么强调"不许改事实"？骨架里每个岗位、每项技能、每个分数都来自真实检索和
+# 确定性打分，模型一旦"自由发挥"就会引入幻觉——这正好是 RAG 要防的东西。
+_POLISH_PROMPT = (
+    "你是求职顾问，下面是系统已经算好的岗位推荐结果（岗位、城市、匹配度分数、"
+    "命中/缺失技能都来自真实检索与打分，**全部准确，不得增删改任何岗位、分数或技能**）。\n"
+    "你的任务只是把它改写成更自然、更有顾问口吻的一段话：\n"
+    "- 开头一句话点明结论（最推荐哪个、为什么）\n"
+    "- 保留所有岗位编号（用户要靠它回查）\n"
+    "- 保留匹配度分数和技能对比\n"
+    "- 结尾给一句行动建议\n"
+    "不要新增任何原始结果里没有的岗位或信息。"
+)
 
-def chat_with_tools(messages: list[dict]) -> dict:
-    """一次带工具定义的 LLM 调用，返回原始 message（content 和/或 tool_calls）。
 
-    messages 遵循 OpenAI 格式，工具结果用 role=tool 回填。
-    温度 0.2：Agent 场景要的是稳定的决策，不是创意。
+def polish_answer(question: str, skeleton: str, history: list[dict]) -> str:
+    """把确定性骨架润色成顾问口吻的回答。只改组织方式，不改事实。
+
+    这是新版图 compose 节点用的函数，替代了旧的 chat_with_tools ReAct 循环——
+    因为"择岗"的专业性来自确定性的检索+打分，模型负责的是表达而不是决策。
+    这个分工（规则管事实、模型管表达）本身就是要展示的设计取向。
     """
-    if not API_KEY:
-        raise RuntimeError("没有找到 SILICONFLOW_API_KEY（看 rag/config.py 的提示）")
-    resp = requests.post(
-        f"{BASE_URL}/chat/completions",
-        headers={
-            "Authorization": f"Bearer {API_KEY}",
-            "Content-Type": "application/json",
-        },
-        json={
-            "model": LLM_MODEL,
-            "messages": messages,
-            "tools": TOOLS_SPEC,
-            "temperature": 0.2,
-        },
-        timeout=(5, 120),
-    )
-    resp.raise_for_status()
-    return resp.json()["choices"][0]["message"]
-
-
-def summarize_without_tools(messages: list[dict]) -> str:
-    """降级总结：步数耗尽后禁用工具，逼模型基于已有信息收尾。
-    这是"护栏"的后半段——前半段是步数上限本身。"""
-    if not API_KEY:
+    if not has_key():
         raise RuntimeError("没有找到 SILICONFLOW_API_KEY")
-    final_messages = messages + [
-        {
-            "role": "system",
-            "content": "已达到工具调用步数上限。请立即基于以上已获取的信息回答用户，不要再调用工具。若信息不足，说明不足之处。",
-        }
+
+    messages = [
+        {"role": "system", "content": _POLISH_PROMPT},
+        {"role": "user", "content": f"用户问题：{question}\n\n系统算好的推荐结果：\n{skeleton}"},
     ]
     resp = requests.post(
         f"{BASE_URL}/chat/completions",
@@ -69,22 +63,8 @@ def summarize_without_tools(messages: list[dict]) -> str:
             "Authorization": f"Bearer {API_KEY}",
             "Content-Type": "application/json",
         },
-        json={"model": LLM_MODEL, "messages": final_messages, "temperature": 0.2},
-        timeout=(5, 120),
+        json={"model": LLM_MODEL, "messages": messages, "temperature": 0.3},
+        timeout=(5, 90),
     )
     resp.raise_for_status()
     return resp.json()["choices"][0]["message"]["content"]
-
-
-def tool_call_summary(message: dict) -> str:
-    """把模型的 tool_calls 转成一行可读文本（CLI 打印过程用）。"""
-    calls = message.get("tool_calls") or []
-    parts = []
-    for c in calls:
-        try:
-            args = json.loads(c["function"]["arguments"])
-            brief = ", ".join(f"{k}={v}" for k, v in args.items())
-        except (json.JSONDecodeError, KeyError):
-            brief = "?"
-        parts.append(f"{c['function']['name']}({brief})")
-    return "；".join(parts)

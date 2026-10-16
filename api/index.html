@@ -163,6 +163,82 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
 }
 
+/* 择岗条件 chips（agent 识别到的画像） */
+.profile-chips{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:12px;
+  animation:in .28s ease}
+.pc-head{font-size:11px;color:var(--fg-mute);text-transform:uppercase;letter-spacing:.6px}
+.pc{font-size:12px;padding:3px 9px;border-radius:20px;background:var(--accent-dim);
+  color:var(--fg);border:1px solid var(--accent-soft);white-space:nowrap}
+.pc b{color:var(--accent);font-weight:650;margin-right:4px;font-size:11px}
+
+/* 推理轨迹时间线 */
+.plan{margin-bottom:13px;border:1px solid var(--line);border-radius:var(--radius-sm);
+  background:linear-gradient(180deg,#161b22,#12161c);overflow:hidden;animation:in .3s ease}
+.plan summary{list-style:none;cursor:pointer;padding:9px 13px;font-size:12.5px;color:var(--fg-dim);
+  display:flex;align-items:center;gap:8px;user-select:none;font-weight:550}
+.plan summary::-webkit-details-marker{display:none}
+.plan summary:hover{color:var(--fg)}
+.plan-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);
+  box-shadow:0 0 8px var(--accent);animation:pulse 1.6s infinite;flex:0 0 auto}
+.plan-list{margin:0;padding:2px 15px 12px 13px;list-style:none;counter-reset:step}
+.plan-list li{counter-increment:step;position:relative;padding:5px 0 5px 24px;
+  font-size:12.5px;color:var(--fg-mute);line-height:1.55;
+  border-left:1px solid var(--line);margin-left:4px;animation:slidein .3s ease both}
+.plan-list li::before{content:counter(step);position:absolute;left:-9px;top:6px;
+  width:17px;height:17px;border-radius:50%;background:#21262d;border:1px solid var(--line);
+  font-size:10px;color:var(--fg-dim);display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono)}
+.plan-list li:last-child{color:var(--fg-dim)}
+@keyframes slidein{from{opacity:0;transform:translateX(-5px)}to{opacity:1;transform:none}}
+
+/* 结构化推荐卡片 */
+.recs{display:flex;flex-direction:column;gap:9px;margin-bottom:14px}
+.recs-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;
+  font-size:11.5px;color:var(--fg-mute);text-transform:uppercase;letter-spacing:.6px;
+  padding-bottom:2px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.recs-tip{text-transform:none;letter-spacing:0;font-size:11px;opacity:.75}
+.rec-card{background:var(--bg-card);border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:12px 14px;transition:border-color .15s,transform .15s;animation:in .3s ease both}
+.rec-card:hover{border-color:var(--accent-soft);transform:translateY(-1px)}
+.rec-card--top{border-color:var(--accent-soft);
+  background:linear-gradient(135deg,rgba(88,166,255,.06),var(--bg-card) 55%)}
+.rec-top{display:flex;gap:11px;align-items:flex-start}
+.rec-rank{font-family:var(--mono);font-size:11px;font-weight:650;color:var(--accent);
+  background:var(--accent-dim);min-width:20px;height:20px;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;flex:0 0 auto;margin-top:1px}
+.rec-title-wrap{flex:1;min-width:0}
+.rec-title{font-size:14px;font-weight:560;color:var(--fg);text-decoration:none;
+  display:block;line-height:1.4;cursor:pointer}
+.rec-title:hover{color:var(--accent);text-decoration:underline}
+.rec-meta{font-size:11.5px;color:var(--fg-mute);margin-top:3px}
+.rec-score{flex:0 0 auto;text-align:right;line-height:1.15}
+.rec-score b{font-size:19px;font-family:var(--mono);font-weight:650;display:block}
+.rec-score span{font-size:10px;color:var(--fg-mute);white-space:nowrap}
+.rec-score.g-high b{color:#3fb950}
+.rec-score.g-mid b{color:#d29922}
+.rec-score.g-low b{color:var(--fg-mute)}
+.rec-skills{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
+.sk{font-size:11.5px;padding:2px 8px;border-radius:6px;white-space:nowrap}
+.sk-hit{color:#3fb950;background:rgba(63,185,80,.12);border:1px solid rgba(63,185,80,.25)}
+.sk-miss{color:#d29922;background:rgba(210,153,34,.1);border:1px solid rgba(210,153,34,.22)}
+.rec-why{margin-top:9px;font-size:11.5px;color:var(--fg-mute)}
+.rec-why summary{cursor:pointer;color:var(--fg-dim);list-style:none;user-select:none}
+.rec-why summary::-webkit-details-marker{display:none}
+.rec-why summary::before{content:"▸ ";color:var(--fg-mute)}
+.rec-why[open] summary::before{content:"▾ "}
+.rec-why ul{margin:6px 0 0 14px;padding:0;line-height:1.65}
+.rec-why li{margin-bottom:2px}
+
+/* 技能差距汇总 */
+.gap-box{margin-top:11px;padding:11px 13px;border-radius:var(--radius-sm);
+  background:rgba(210,153,34,.06);border:1px solid rgba(210,153,34,.2);animation:in .3s ease}
+.gap-head{font-size:12.5px;font-weight:600;color:#d29922;margin-bottom:9px}
+.gap-items{display:flex;gap:7px;flex-wrap:wrap}
+.gap-item{font-size:12px;padding:3px 10px;border-radius:20px;background:#21262d;
+  border:1px solid var(--line);color:var(--fg);display:inline-flex;align-items:center;gap:6px}
+.gap-item em{font-style:normal;font-size:10.5px;color:var(--fg-mute)}
+.gap-note{font-size:11px;color:var(--fg-mute);margin-top:9px;line-height:1.55}
+
 /* 思考中 */
 .thinking{display:flex;gap:5px;padding:6px 0}
 .thinking i{width:7px;height:7px;border-radius:50%;background:var(--fg-mute);animation:pulse 1.3s infinite}
@@ -322,9 +398,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
             <h2>想找什么样的岗位？</h2>
             <p>基于真实采集的招聘 JD 回答，每一条推荐都能点回原文核对，不说没根据的话。</p>
             <div class="examples" id="examples">
-              <button class="ex"><b>技能匹配</b>我会 Python 和一点 LangChain，适合投什么岗？</button>
-              <button class="ex"><b>按城市找</b>深圳有哪些大模型方向的岗位？</button>
-              <button class="ex"><b>按方向找</b>Agent 开发相关的岗位有哪些？</button>
+              <button class="ex"><b>试试追问</b>帮我推荐些岗位</button>
+              <button class="ex"><b>技能匹配</b>我在深圳找 Agent 开发岗，会 Python 和 LangGraph，应届生</button>
+              <button class="ex"><b>按城市找</b>北京有哪些大模型推理方向的岗位？</button>
               <button class="ex"><b>技能差距</b>我熟悉 PyTorch，想做大模型后训练，还差什么？</button>
             </div>
           </div>
@@ -381,7 +457,7 @@ const $$ = (s) => [...document.querySelectorAll(s)];
 const API = '';  // 同源部署，留空即用当前域
 
 /* ==================== 状态 ==================== */
-const S = { mode:'offline', hasKey:false, jobs:0, loc:'', kw:'', offset:0, busy:false, loaded:false };
+const S = { mode:'offline', hasKey:false, jobs:0, loc:'', kw:'', offset:0, busy:false, loaded:false, profile:{}, lastRecs:[] };
 
 /* ==================== 初始化 ==================== */
 async function boot(){
@@ -448,7 +524,7 @@ $('#examples').addEventListener('click', (e) => {
   const b = e.target.closest('.ex');
   if(!b) return;
   // 取按钮文案里"加粗标签"之后的部分作为问题
-  const txt = b.textContent.trim().replace(/^(技能匹配|按城市找|按方向找|技能差距)/, '').trim();
+  const txt = b.textContent.trim().replace(/^(试试追问|技能匹配|按城市找|按方向找|技能差距)/, '').trim();
   ta.value = txt; autoGrow(); ask();
 });
 
@@ -469,11 +545,14 @@ async function ask(){
   scrollBottom();
 
   let answerEl = null;
+  let planEl = null;      // 推理轨迹时间线（agent 的思考过程）
+  let profileEl = null;   // 识别到的择岗条件
+  let recEl = null;       // 结构化推荐卡片
   try{
     const resp = await fetch(API + '/ask', {
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ question:q, top_k:5 })
+      body: JSON.stringify({ question:q, top_k:5, profile: S.profile || {} })
     });
     if(!resp.ok) throw new Error('HTTP ' + resp.status);
 
@@ -513,14 +592,50 @@ async function ask(){
     if(event === 'meta'){
       S.mode = d.mode; S.hasKey = d.has_key; paintMode();
     }
-    else if(event === 'sources'){
+    else if(event === 'profile'){
+      // 择岗条件：让用户看到 agent 理解了什么，理解错了能当场纠正
+      S.profile = d;
       think.remove();
-      if(!answerEl){
-        answerEl = document.createElement('div');
-        answerEl.className = 'answer';
-        bot.answer.appendChild(answerEl);
+      if(!profileEl){
+        profileEl = document.createElement('div');
+        profileEl.className = 'profile-chips';
+        bot.answer.appendChild(profileEl);
       }
-      if(d.length) renderSources(bot.answer, d);
+      renderProfileChips(profileEl, d);
+    }
+    else if(event === 'plan'){
+      // 推理轨迹：agent 的每一步决策，逐步追加
+      if(!planEl){
+        planEl = document.createElement('details');
+        planEl.className = 'plan';
+        planEl.open = true;
+        planEl.innerHTML = '<summary><span class="plan-dot"></span>推理过程</summary><ol class="plan-list"></ol>';
+        bot.answer.appendChild(planEl);
+      }
+      const ol = planEl.querySelector('.plan-list');
+      const li = document.createElement('li');
+      li.innerHTML = esc(d.text);
+      li.style.animationDelay = '0ms';
+      ol.appendChild(li);
+    }
+    else if(event === 'clarify'){
+      // 追问：高亮显示，并把画像存下来给下一轮
+      S.profile = d.profile || S.profile;
+      think.remove();
+    }
+    else if(event === 'recommendations'){
+      think.remove();
+      if(!recEl){
+        recEl = document.createElement('div');
+        recEl.className = 'recs';
+        bot.answer.appendChild(recEl);
+      }
+      renderRecommendations(recEl, d);
+      // 收藏一份供点开详情
+      S.lastRecs = d;
+    }
+    else if(event === 'gap'){
+      if(recEl && d && (d.top_missing||[]).length) renderGap(recEl, d);
     }
     else if(event === 'token'){
       if(!answerEl){
@@ -539,6 +654,73 @@ async function ask(){
       bot.answer.appendChild(p);
     }
   }
+}
+
+// —— 择岗条件 chips ——
+const SLOT_LABEL = {city:'城市', direction:'方向', experience:'经验', skills:'技能', salary:'薪资'};
+function renderProfileChips(el, d){
+  const keys = Object.keys(d || {});
+  if(!keys.length){ el.remove(); return; }
+  el.innerHTML = '<span class="pc-head">已识别条件</span>' +
+    keys.map(k => `<span class="pc"><b>${SLOT_LABEL[k]||k}</b>${esc(String(d[k]))}</span>`).join('');
+}
+
+// —— 结构化推荐卡片 ——
+function renderRecommendations(el, recs){
+  el.innerHTML = '';
+  const head = document.createElement('div');
+  head.className = 'recs-head';
+  head.innerHTML = `<span>推荐 ${recs.length} 个岗位</span><span class="recs-tip">按匹配度排序 · 点标题看完整 JD</span>`;
+  el.appendChild(head);
+
+  recs.forEach((r, i) => {
+    const card = document.createElement('div');
+    card.className = 'rec-card' + (i === 0 ? ' rec-card--top' : '');
+    const grade = r.grade || '';
+    const gradeCls = r.score >= 80 ? 'g-high' : r.score >= 60 ? 'g-mid' : 'g-low';
+    card.innerHTML = `
+      <div class="rec-top">
+        <span class="rec-rank">${i+1}</span>
+        <div class="rec-title-wrap">
+          <a class="rec-title" data-id="${esc(r.job_id)}">${esc(r.title)}</a>
+          <div class="rec-meta">${esc(r.location)}${r.department ? ' · '+esc(r.department) : ''}${r.experience ? ' · '+esc(r.experience) : ''}</div>
+        </div>
+        <div class="rec-score ${gradeCls}">
+          <b>${r.score}</b>
+          <span>${esc(grade)}</span>
+        </div>
+      </div>
+      ${(r.matched_skills&&r.matched_skills.length) || (r.missing_skills&&r.missing_skills.length) ? `
+      <div class="rec-skills">
+        ${(r.matched_skills||[]).map(s=>`<span class="sk sk-hit">✓ ${esc(s)}</span>`).join('')}
+        ${(r.missing_skills||[]).map(s=>`<span class="sk sk-miss">✗ ${esc(s)}</span>`).join('')}
+      </div>` : ''}
+      ${(r.reasons&&r.reasons.length) ? `<details class="rec-why"><summary>评分依据</summary><ul>${r.reasons.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></details>` : ''}
+    `;
+    el.appendChild(card);
+  });
+
+  // 点标题 → 打开详情弹窗（DOM 渲染完再绑事件）
+  el.querySelectorAll('.rec-title').forEach(a => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      const rec = recs.find(x => x.job_id === a.dataset.id);
+      // 有 url 直接开原文，没有就调本地详情接口
+      if(rec && rec.url){ window.open(rec.url, '_blank'); }
+      else { openDetail(a.dataset.id); }
+    });
+  });
+}
+
+// —— 技能差距汇总 ——
+function renderGap(el, gap){
+  const box = document.createElement('div');
+  box.className = 'gap-box';
+  box.innerHTML = `<div class="gap-head">📌 最该补齐的技能</div>
+    <div class="gap-items">${(gap.top_missing||[]).map(x=>
+      `<span class="gap-item">${esc(x.skill)}<em>${x.count} 个岗位</em></span>`).join('')}</div>
+    <div class="gap-note">${esc(gap.note||'')}</div>`;
+  el.appendChild(box);
 }
 
 function addUser(text){
@@ -567,35 +749,6 @@ function appendToken(el, text){
 }
 function flushToken(el){
   el.innerHTML = md(renderBuf) + '<span class="cursor"></span>';
-}
-
-function renderSources(parent, list){
-  const wrap = document.createElement('div');
-  wrap.className = 'srcs';
-  wrap.innerHTML = `<div class="ttl">检索到的岗位（共 ${list.length} 条依据）</div>`;
-  list.forEach((h, i) => {
-    const a = document.createElement('a');
-    a.className = 'src';
-    a.href = h.url || '#';
-    a.target = '_blank'; a.rel = 'noopener';
-    a.innerHTML = `
-      <div class="hd">
-        <span class="idx">${i + 1}</span>
-        <span class="nm">${esc(h.title)}</span>
-        <span class="sc">${(h.score || 0).toFixed(2)}</span>
-      </div>
-      <div class="meta">
-        <span class="tag loc">${esc(h.location || '未知')}</span>
-        ${h.experience ? `<span class="tag">${esc(h.experience)}</span>` : ''}
-        ${h.department ? `<span class="tag">${esc(h.department)}</span>` : ''}
-        ${h.company ? `<span class="tag">${esc(h.company)}</span>` : ''}
-      </div>`;
-    a.addEventListener('click', (e) => {
-      if(!h.url){ e.preventDefault(); openDetail(h.job_id); }
-    });
-    wrap.appendChild(a);
-  });
-  parent.appendChild(wrap);
 }
 
 /* 轻量 Markdown：只处理模型最常输出的几种（加粗/代码/分隔线/段落/列表） */

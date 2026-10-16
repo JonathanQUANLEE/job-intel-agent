@@ -1,7 +1,11 @@
-"""CLI 入口：python -m agent --ask "..."
+"""CLI 入口：python -m agent --ask "..." [--profile-json '{...}']
 
-打印完整 ReAct 过程（模型决定 → 工具执行 → 继续思考），面试演示时
-评委能看到"决策权在模型手里"这件事本身，而不是只看到最终答案。
+打印完整的决策轨迹（抽槽 → 追问/检索 → 打分 → 补搜 → 成稿），
+面试演示时评委能看到"agent 在每一步想什么、为什么这么走"，
+而不是只看到一个最终答案——这才是"编排"和"调 API"的区别。
+
+--profile-json 支持跨轮：第一轮追问后，把上一轮输出的画像存下来传回来，
+下一轮就能接着用（命令行里手动演示多轮）。
 """
 
 import argparse
@@ -9,41 +13,52 @@ import json
 
 from . import __version__
 from .graph import run_agent
-from .llm_client import tool_call_summary
+from .profile import Profile, Slot
 
 
-def _print_trace(messages: list[dict]) -> str:
-    """回放 messages，展示循环过程。返回最终回答文本。"""
-    final = ""
-    for m in messages:
-        role = m.get("role")
-        if role == "assistant" and m.get("tool_calls"):
-            print(f"\n  [模型] 决定调用工具：{tool_call_summary(m)}")
-        elif role == "assistant" and m.get("content"):
-            final = m["content"]
-        elif role == "tool":
-            preview = (m.get("content") or "")[:120].replace("\n", " ")
-            print(f"  [工具] 返回：{preview}...")
-    return final
+def _load_profile(raw: str) -> Profile:
+    """从 JSON 还原画像（命令行传参用）。格式：{"city": "深圳", "direction": "agent"}"""
+    p = Profile()
+    if not raw:
+        return p
+    try:
+        data = json.loads(raw)
+    except json.JSONDecodeError:
+        print("[警告] --profile-json 不是合法 JSON，已忽略")
+        return p
+    for name in ("city", "direction", "experience", "skills", "salary"):
+        if data.get(name):
+            setattr(p, name, Slot(value=str(data[name]), filled=True, source="user"))
+    return p
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(prog="agent", description="Agent 岗位情报站 · 智能体")
+    parser = argparse.ArgumentParser(prog="agent", description="Agent 岗位情报站 · 择岗顾问")
     parser.add_argument("--ask", metavar="问题", required=True, help="求职问题")
     parser.add_argument("--db", default="jobs.db")
-    parser.add_argument("--max-steps", type=int, default=6, help="工具调用轮数上限（护栏）")
+    parser.add_argument("--profile-json", default="", help="跨轮画像，如 '{\"city\":\"深圳\"}'")
     parser.add_argument("--version", action="version", version=__version__)
     args = parser.parse_args()
 
     print(f"问题：{args.ask}")
-    print("─" * 50)
-    state = run_agent(args.ask, db_path=args.db, max_steps=args.max_steps)
+    print("─" * 56)
 
-    answer = _print_trace(state["messages"])
-    print("─" * 50)
-    print("\n回答：")
-    print(answer if answer else "（未产生回答——检查 API Key 与索引）")
-    print(f"\n本轮工具调用 {state['steps']} 次（上限 {args.max_steps}）")
+    state = run_agent(args.ask, db_path=args.db, profile=_load_profile(args.profile_json))
+
+    # 决策轨迹：每一步都在回答"agent 为什么这么做"
+    print("决策轨迹：")
+    for i, step in enumerate(state.get("trace") or [], 1):
+        print(f"  {i}. {step}")
+
+    print("─" * 56)
+    print("\n回答：\n")
+    print(state.get("answer") or "（未产生回答——检查数据与索引）")
+
+    # 追问场景下把画像打出来，方便用户带着它再问一轮
+    if state.get("need_clarify"):
+        print("\n" + "─" * 56)
+        print("下一轮可带上已识别的画像继续问：")
+        print(f"  python -m agent --ask \"你的补充信息\" --profile-json '{json.dumps(state['profile'].as_dict(), ensure_ascii=False)}'")
 
 
 if __name__ == "__main__":

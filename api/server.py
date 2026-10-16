@@ -2,53 +2,69 @@
 
 接口一览：
   GET  /                 直接打开聊天界面（单文件 HTML，免构建）
-  POST /ask              SSE 流式问答（打字机效果）
+  POST /ask              SSE 流式问答（打字机效果 + 推理轨迹）
   GET  /jobs             岗位列表（关键词 + 城市筛选，浏览页用）
   GET  /jobs/{job_id}    单个岗位完整 JD（详情弹窗用）
   GET  /meta             城市分布、岗位总数、是否已配 Key（前端初始化用）
 
-为什么要流式（SSE）而不是一次性 JSON？
-生成一个完整回答要几秒，"打字机效果"把首字延迟从'整答完成'降到
-'第一个 token'，这是所有 AI 产品标配体验的原因。
-SSE = Server-Sent Events：HTTP 长连接上服务端单向推 event，
-比 WebSocket 简单（问答场景不需要双向）。
+为什么是"推理轨迹"而不只是"回答"？
+择岗顾问的价值不只是给结论，还要说清"为什么是这几个"。所以 SSE 除了推回答文本，
+还推 plan 事件（agent 每一步的决策）和 recommendations 事件（带分数和技能明细的
+结构化推荐）。前端把轨迹渲染成一条时间线，用户能看到 agent 先抽了什么条件、
+检索了多少候选、谁排第一、差哪项技能——这是通用编程 agent 给不了的透明度。
 
 事件协议（前端按 event 类型分流）：
-  event: meta     → 本次检索走的通道（vector/offline）+ 来源条数
-  event: sources  → 检索到的岗位列表（回答前先亮证据）
-  event: token    → 逐段回答文本
-  event: done     → 结束标记
-  event: error    → 出错信息
+  event: meta            → 本次检索走的通道（vector/offline）
+  event: profile         → 从问题里抽出的择岗画像（城市/方向/技能…）
+  event: plan            → 推理轨迹，逐步推送（抽槽→检索→打分→成稿）
+  event: clarify         → 信息不足，agent 在追问（前端高亮显示）
+  event: recommendations → 结构化推荐：每条含匹配分、命中/缺失技能、依据
+  event: token           → 逐段回答文本
+  event: done            → 结束标记
+  event: error           → 出错信息（含降级提示）
 """
 
 import json
 from pathlib import Path
 
-import requests
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.responses import FileResponse, StreamingResponse
 from pydantic import BaseModel, Field
 
+from agent.graph import run_agent
+from agent.profile import Profile, Slot
 from crawler.storage import count_jobs, get_job, list_jobs, locations
-from rag import config as rag_config
-from rag.config import BASE_URL, LLM_MODEL, has_key
-from rag.llm import _SYSTEM_PROMPT
-from rag.retriever import retrieve
+from rag.config import has_key
+from rag.retriever import MODE_OFFLINE
 
-app = FastAPI(title="Agent 岗位情报站", version="0.2.0")
+app = FastAPI(title="Agent 岗位情报站", version="0.3.0")
 
 _INDEX_HTML = Path(__file__).with_name("index.html")
 
 
 class AskRequest(BaseModel):
-    """请求体。Pydantic 在边界上做校验（缺字段/类型错 422 自动返回）。"""
-    question: str = Field(min_length=2, max_length=200)
+    """请求体。Pydantic 在边界上做校验（缺字段/类型错 422 自动返回）。
+
+    profile 字段支持多轮：前端把上一轮返回的画像存着，下一轮带上，
+    agent 就能累积条件（第一次说"深圳"、第二次说"Agent"，合起来才够）。
+    """
+    question: str = Field(min_length=1, max_length=300)
     top_k: int = Field(default=5, ge=1, le=10)
+    profile: dict = Field(default_factory=dict)
 
 
 def _sse(event: str, data) -> str:
     """SSE 一帧：event 行 + data 行。data 序列化为 JSON。"""
     return f"event: {event}\ndata: {json.dumps(data, ensure_ascii=False)}\n\n"
+
+
+def _profile_from_dict(d: dict) -> Profile:
+    """把前端传来的画像 dict 还原成 Profile（跨轮沿用）。"""
+    p = Profile()
+    for name in ("city", "direction", "experience", "skills", "salary"):
+        if d.get(name):
+            setattr(p, name, Slot(value=str(d[name]), filled=True, source="user"))
+    return p
 
 
 @app.get("/")
@@ -92,113 +108,79 @@ def job_detail(job_id: str) -> dict:
     return job
 
 
-def _fallback_answer(hits: list[dict]) -> str:
-    """没有 Key 时的本地作答：把检索结果组织成可读的推荐清单。
+def _recommendations(state: dict) -> list[dict]:
+    """把图输出的 (job, Score) 转成前端能直接渲染的结构化推荐。"""
+    out = []
+    for job, s in state.get("scored") or []:
+        out.append({
+            "job_id": job["job_id"],
+            "title": job["title"],
+            "location": job["location"],
+            "company": job.get("company", ""),
+            "department": job.get("department", ""),
+            "experience": job.get("experience", ""),
+            "url": job.get("url", ""),
+            "score": s.total,
+            "grade": s.grade(),
+            "matched_skills": s.matched_skills,
+            "missing_skills": s.missing_skills,
+            "reasons": s.reasons,
+        })
+    return out
 
-    这不是"假回答"——它诚实声明"当前是本地离线模式"，
-    并逐条列出岗位、地点、相关度，对用户仍有真实价值（确实能定位岗位），
-    同时明确引导"配上 Key 可获得 AI 分析"，把降级变成转化引导。
-    """
-    if not hits:
-        return (
-            "没有检索到相关岗位。\n\n"
-            "可能原因：岗位库为空（先运行 `python -m crawler --source tencent "
-            "--keyword \"大模型\" --max-pages 3` 采集数据），或者换个说法再问一次。"
-        )
-    lines = [
-        "当前是**本地离线检索模式**（未配置 API Key，无法调用大模型做分析）。",
-        f"我按关键词相关度为你找到 {len(hits)} 个可能匹配的岗位：\n",
-    ]
-    for i, h in enumerate(hits, 1):
-        lines.append(
-            f"**{i}. {h['title']}**（{h['location']}｜相关度 {h['score']:.2f}）\n"
-            f"　{h['text'][:160].replace(chr(10), ' ')}…"
-        )
-    lines.append(
-        "\n---\n"
-        "想要 AI 逐条分析匹配度、指出技能差距？在项目根目录新建 `.env` 写入 "
-        "`SILICONFLOW_API_KEY=sk-xxx` 后重启服务即可。"
-    )
-    return "\n".join(lines)
+
+def _chunks(text: str, size: int = 14):
+    """把文本切成小块，复刻打字机节奏（模型润色已自带流，模板成稿靠这个造节奏）。"""
+    for i in range(0, len(text), size):
+        yield text[i : i + size]
 
 
 @app.post("/ask")
 def ask(req: AskRequest) -> StreamingResponse:
-    """流式问答。generator 内 yield SSE 帧——
-    FastAPI 的 StreamingResponse 会把 generator 的产出持续推给客户端。"""
+    """流式择岗。跑完整决策图，把轨迹和结构化推荐逐步推给前端。
+
+    注意：这里**先跑图再推流**，而不是边跑边推——因为要拿到完整的 trace
+    才能保证"轨迹顺序 = 实际执行顺序"，不会出现"先看到成稿再看到检索"的错乱。
+    图的单个节点很快（毫秒级检索 + 规则打分），只有最后的模型润色是慢的，
+    但润色不走流式（一次性生成），所以整体延迟仍然可控。
+    """
 
     def gen():
         try:
-            hits, mode = retrieve(req.question, "jobs.db", top_k=req.top_k, want_mode=True)
+            profile = _profile_from_dict(req.profile or {})
+            state = run_agent(req.question, "jobs.db", profile=profile)
 
             yield _sse("meta", {
-                "mode": mode, "has_key": has_key(), "n_sources": len(hits),
+                "has_key": has_key(),
+                "mode": "vector" if has_key() else MODE_OFFLINE,
+                "n_sources": len(state.get("candidates") or []),
             })
 
-            if not hits:
-                yield _sse("sources", [])
-                yield _sse("token", {"text": "岗位库为空或没匹配到内容。"})
+            # 选岗画像：让用户看到 agent 理解了什么（理解错了能当场纠正）
+            yield _sse("profile", state["profile"].as_dict())
+
+            # 推理轨迹：逐步推送，前端渲染成时间线
+            for i, step in enumerate(state.get("trace") or [], 1):
+                yield _sse("plan", {"index": i, "text": step})
+
+            # 追问分支：前端高亮提示 + 留住画像
+            if state.get("need_clarify"):
+                yield _sse("clarify", {
+                    "text": state["answer"],
+                    "profile": state["profile"].as_dict(),
+                })
+                for piece in _chunks(state["answer"]):
+                    yield _sse("token", {"text": piece})
                 yield _sse("done", {})
                 return
 
-            # 先推来源：让前端在等第一个字时就看到"依据"
-            yield _sse("sources", [
-                {
-                    "job_id": h["job_id"], "title": h["title"], "location": h["location"],
-                    "company": h["company"], "department": h["department"],
-                    "experience": h["experience"], "url": h["url"], "score": h["score"],
-                }
-                for h in hits
-            ])
+            recs = _recommendations(state)
+            if recs:
+                yield _sse("recommendations", recs)
+                yield _sse("gap", state.get("gap") or {})
 
-            # 无 Key：走本地降级作答，把检索结果组织成清单推给前端
-            if not has_key():
-                text = _fallback_answer(hits)
-                # 按小块推，复刻打字机节奏（本地模式没有 token 流，这里造一个）
-                for i in range(0, len(text), 12):
-                    yield _sse("token", {"text": text[i : i + 12]})
-                yield _sse("done", {})
-                return
-
-            # 有 Key：正常走 LLM 流式生成
-            snippets = "\n\n".join(
-                f"[{i + 1}] 岗位：{h['title']}（{h['location']}，编号 {h['job_id']}）\n{h['text']}"
-                for i, h in enumerate(hits)
-            )
-            user_content = (
-                f"用户问题：{req.question}\n\n以下是检索到的真实岗位片段，请据此回答：\n{snippets}"
-            )
-
-            with requests.post(
-                f"{BASE_URL}/chat/completions",
-                headers={
-                    "Authorization": f"Bearer {rag_config.API_KEY}",
-                    "Content-Type": "application/json",
-                },
-                json={
-                    "model": LLM_MODEL,
-                    "messages": [
-                        {"role": "system", "content": _SYSTEM_PROMPT},
-                        {"role": "user", "content": user_content},
-                    ],
-                    "temperature": 0.3,
-                    "stream": True,
-                },
-                timeout=(5, 120),
-                stream=True,
-            ) as resp:
-                resp.raise_for_status()
-                for line in resp.iter_lines(decode_unicode=True):
-                    if not line or not line.startswith("data:"):
-                        continue
-                    payload = line[len("data:"):].strip()
-                    if payload == "[DONE]":
-                        break
-                    chunk = json.loads(payload)
-                    delta = chunk["choices"][0]["delta"].get("content")
-                    if delta:
-                        yield _sse("token", {"text": delta})
-
+            for piece in _chunks(state["answer"]):
+                yield _sse("token", {"text": piece})
             yield _sse("done", {})
         except Exception as e:  # noqa: BLE001 —— SSE 已开头，异常只能走事件通道
             yield _sse("error", {"message": f"{type(e).__name__}: {e}"})
